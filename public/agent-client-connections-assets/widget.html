@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<!-- saved from url=(1177)https://beforeafter-widget.appholdings.org/Wix/widget?pageId=qpyuw&compId=comp-l4fiodhb&viewerCompId=comp-l4fiodhb&siteRevision=1002&viewMode=site&deviceType=desktop&locale=en&tz=Asia%2FKolkata&regionalLanguage=en&width=804&height=670&instance=0IvZI0J-TACFgrKMN8Gtc8ZryDGXfzqyk_6ZYwKJgGo.eyJpbnN0YW5jZUlkIjoiNTFjY2UxYWQtNzZhNC00NTM3LTk5M2MtOGUzOTUwMDMzNTM5IiwiYXBwRGVmSWQiOiIxM2JlZjJjYS1iZDIyLTY0ODItMGI3ZC02Yzk1ZjA5Y2MzMDIiLCJzaWduRGF0ZSI6IjIwMjUtMTItMTNUMTI6MTM6MDAuOTY4WiIsImRlbW9Nb2RlIjpmYWxzZSwiYWlkIjoiODE5NTM3NTctYmM4Yy00MWI1LTlhNTEtYmQ4MmRjNDg0YTYwIiwic2l0ZU93bmVySWQiOiJlYjIyZmY5OC02NjE4LTQ5ZWUtYTkwMy1iNDUyYjc4Y2FmNmUiLCJicyI6IjB4eGVCeXR3TER5TGhtSW1VejVmLU5MZlVKeGI0Z1V5eFpvekg0OVoyMEkiLCJzY2QiOiIyMDE5LTEwLTA1VDE1OjEyOjUwLjc1N1oifQ&currency=INR&currentCurrency=INR&commonConfig=%7B%22brand%22%3A%22wix%22%2C%22host%22%3A%22VIEWER%22%2C%22bsi%22%3A%22bc2d85ab-f2dd-4b14-80fb-14e00ab84b0d%7C1%22%2C%22siteRevision%22%3A%221002%22%2C%22renderingFlow%22%3A%22NONE%22%2C%22language%22%3A%22en%22%2C%22locale%22%3A%22en-in%22%2C%22BSI%22%3A%22bc2d85ab-f2dd-4b14-80fb-14e00ab84b0d%7C1%22%7D&currentRoute=.%2Fagent-client-connections&vsi=dd725e33-f202-46a3-9a97-619a3407fdc4 -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Before And After Slider</title>
+    <link href="./wix.css" rel="stylesheet">
+    <link href="./beforeafter.css" rel="stylesheet">
+
+    <script>
+        function log(a) {
+            if (typeof console === "undefined") return;
+            try { console.log(a); } catch (e) { }
+        }
+        log('start - Widget.v3.cshtml file - DEBUG VERSION LOADED');
+        log('=== VIEWBAG DEBUG START ===');
+        log('ViewBag.Item exists: true');
+        log('ViewBag.compId: comp-l4fiodhb');
+            
+            log('ViewBag.Item properties:');
+            log(' BeforeWixRelUri: "eb22ff_bc1f3e6f8d3449e3876fcca77724d395~mv2.jpeg"');
+            log(' AfterWixRelUri: "eb22ff_8d6524f2ef794defa2c43cbfd9f07943~mv2.jpeg"');
+            log(' BeforeWidth: 1872');
+            log(' BeforeHeight: 1560');
+            log(' AfterWidth: 1872');
+            log(' AfterHeight: 1560');
+            log(' BeforeImgSrc: "https://wixbeforeafter.blob.core.windows.net/app/default_before.jpg"');
+            log(' AfterImgSrc: "https://wixbeforeafter.blob.core.windows.net/app/default_after.jpg"');
+            log(' AutoPlay: false');
+            log(' StartingOffset: 50');
+            
+        log('=== VIEWBAG DEBUG END ===');
+
+        function isIeOrEdge() {
+            if (document.documentMode || /Edge/.test(navigator.userAgent)) {
+                return true;
+            }
+            return false;
+        }
+    </script>
+
+    <style>
+        .cTools { position: absolute; top: 0px; right: 0px; z-index: 35; visibility: hidden; }
+        .btnFS{
+            height:50px;width:50px; border: none; background-color: transparent; padding: 0; font-size: 100%;
+            opacity: .9; display: inline-block;
+            -moz-transition: opacity .1s cubic-bezier(0.4,0.0,1,1);
+            -webkit-transition: opacity .1s cubic-bezier(0.4,0.0,1,1);
+            transition: opacity .1s cubic-bezier(0.4,0.0,1,1); overflow: hidden;
+        }
+        .btnFS svg { fill: rgba(255,255,255,.65); -webkit-filter: drop-shadow( 3px 3px 2px rgba(0, 0, 0, .7)); filter: drop-shadow( 3px 3px 2px rgba(0, 0, 0, .7)); }
+        .btnFS:hover svg { fill: rgba(255,255,255,.90); cursor: pointer; }
+        .twentytwenty-container{ margin:auto; }
+        .twentytwenty-container:hover .cTools { visibility: visible; }
+        .twentytwenty-container.active .cTools {visibility: hidden;}
+
+            .twentytwenty-before-label:before {content: "Before branding";}
+                    .twentytwenty-after-label:before {content: "After branding";}
+
+        /* vertical center */
+        .twentytwenty-horizontal .twentytwenty-before-label:before,
+        .twentytwenty-horizontal .twentytwenty-after-label:before {
+            top: 50%; margin-top: 0; transform: translate(0,-50%); -webkit-transform: translate(0%,-50%); -moz-transform: translate(0,-50%);
+        }
+        /* reset for version v2 */
+        .twentytwenty-before-label::before, .twentytwenty-after-label::before {
+            color: white; font-size: 15px; padding: 15px 20px; letter-spacing: unset;
+            font-family:din-next-w01-light,din-next-w02-light,din-next-w10-light,sans-serif;
+            max-width: 40%; word-wrap: break-word; overflow-wrap: break-word;
+        }
+    </style>
+
+    <style wix-style="">
+        body { background-color:transparent; }
+        h1 { font:normal normal normal 13px/1.4em wfont_5b81a2_981054657d464bd8a4b8093a65f2ca09,wf_981054657d464bd8a4b8093a6,orig_geist_semibold; }
+        footer { font:normal normal bold 15px/18px wfont_9353b7_4095251393b54154b5203a4477fc5e0f,wf_4095251393b54154b5203a447,orig_plus_jakarta_sans_semibold; background-color: style.backgroundColor; color: #FFFFFF; }
+        .cBefore, .cAfter { font:normal normal bold 15px/18px wfont_9353b7_4095251393b54154b5203a4477fc5e0f,wf_4095251393b54154b5203a447,orig_plus_jakarta_sans_semibold; background-color: style.backgroundColor; color: rgba(255,255,255,1); }
+        
+        .body-content, .twentytwenty-before-label::before, .twentytwenty-after-label::before { font:normal normal bold 15px/18px wfont_9353b7_4095251393b54154b5203a4477fc5e0f,wf_4095251393b54154b5203a447,orig_plus_jakarta_sans_semibold; }
+        .twentytwenty-before-label:before, .twentytwenty-after-label:before { color: rgba(255,255,255,1); }
+        .twentytwenty-horizontal .twentytwenty-handle::before, .twentytwenty-horizontal .twentytwenty-handle::after,
+        .twentytwenty-vertical .twentytwenty-handle::before, .twentytwenty-vertical .twentytwenty-handle::after { background: rgba(255,255,255,1); }
+        .twentytwenty-handle { border-color: rgba(255,255,255,1); }
+        .twentytwenty-up-arrow { border-bottom-color: rgba(255,255,255,1); }
+        .twentytwenty-right-arrow { border-left-color: rgba(255,255,255,1); }
+        .twentytwenty-down-arrow { border-top-color: rgba(255,255,255,1); }
+        .twentytwenty-left-arrow { border-right-color: rgba(255,255,255,1); }
+        .twentytwenty-horizontal .twentytwenty-handle:before, .twentytwenty-horizontal .twentytwenty-handle:after {
+            -webkit-box-shadow: 0 3px 0 rgba(255,255,255,1), 0px 0px 12px rgba(51, 51, 51, 0.5);
+            -moz-box-shadow: 0 3px 0 rgba(255,255,255,1), 0px 0px 12px rgba(51, 51, 51, 0.5);
+            box-shadow: 0 3px 0 rgba(255,255,255,1), 0px 0px 12px rgba(51, 51, 51, 0.5);
+        }
+        .twentytwenty-overlay:hover {background-color:rgba(20,20,20,0.44)}
+        .twentytwenty-before-label:before, .twentytwenty-after-label:before { background-color:rgba(255,255,255,0.2) }
+    </style>
+<style wix-style="">.Title{ font:normal normal normal 13px/1.4em wfont_5b81a2_981054657d464bd8a4b8093a65f2ca09,wf_981054657d464bd8a4b8093a6,orig_geist_semibold; } .Menu{ font:normal normal normal 16px/1.4em din-next-w01-light,sans-serif; } .Page-title{ font:normal normal normal 28px/1.4em wfont_5b81a2_981054657d464bd8a4b8093a65f2ca09,wf_981054657d464bd8a4b8093a6,orig_geist_semibold; } .Heading-XL{ font:normal normal normal 40px/1.2em wfont_5b81a2_981054657d464bd8a4b8093a65f2ca09,wf_981054657d464bd8a4b8093a6,orig_geist_semibold; } .Heading-L{ font:normal normal bold 16px/2em wfont_5b81a2_981054657d464bd8a4b8093a65f2ca09,wf_981054657d464bd8a4b8093a6,orig_geist_semibold; } .Heading-M{ font:normal normal normal 30px/1.4em wfont_5b81a2_981054657d464bd8a4b8093a65f2ca09,wf_981054657d464bd8a4b8093a6,orig_geist_semibold; } .Heading-S{ font:normal normal normal 30px/1.4em wfont_5b81a2_24461c5d58d743049128689d51d8d57a,wf_24461c5d58d743049128689d5,orig_geist_medium; } .Body-L{ font:normal normal normal 16px/1.4em wfont_5b81a2_123b5683024f4cf5bf104edda5fafb5f,wf_123b5683024f4cf5bf104edda,orig_geist_regular; } .Body-M{ font:normal normal bold 18px/1.6em wfont_5b81a2_123b5683024f4cf5bf104edda5fafb5f,wf_123b5683024f4cf5bf104edda,orig_geist_regular; } .Body-S{ font:normal normal normal 14px/1.4em wfont_5b81a2_123b5683024f4cf5bf104edda5fafb5f,wf_123b5683024f4cf5bf104edda,orig_geist_regular; } .Body-XS{ font:normal normal normal 12px/1.4em din-next-w01-light,sans-serif; } }</style><style>@font-face {
+font-display: swap;
+font-family: wf_4095251393b54154b5203a447;
+src: url("https://static.wixstatic.com/ufonts/9353b7_4095251393b54154b5203a4477fc5e0f/woff2/file.woff2") format("woff2"),
+url("https://static.wixstatic.com/ufonts/9353b7_4095251393b54154b5203a4477fc5e0f/woff/file.woff") format("woff"),
+url("https://static.wixstatic.com/ufonts/9353b7_4095251393b54154b5203a4477fc5e0f/ttf/file.ttf") format("ttf");
+}
+@font-face {
+font-display: swap;
+font-family: wf_981054657d464bd8a4b8093a6;
+src: url("https://static.wixstatic.com/ufonts/5b81a2_981054657d464bd8a4b8093a65f2ca09/woff2/file.woff2") format("woff2"),
+url("https://static.wixstatic.com/ufonts/5b81a2_981054657d464bd8a4b8093a65f2ca09/woff/file.woff") format("woff"),
+url("https://static.wixstatic.com/ufonts/5b81a2_981054657d464bd8a4b8093a65f2ca09/ttf/file.ttf") format("ttf");
+}
+@font-face {
+font-display: swap;
+font-family: wf_24461c5d58d743049128689d5;
+src: url("https://static.wixstatic.com/ufonts/5b81a2_24461c5d58d743049128689d51d8d57a/woff2/file.woff2") format("woff2"),
+url("https://static.wixstatic.com/ufonts/5b81a2_24461c5d58d743049128689d51d8d57a/woff/file.woff") format("woff"),
+url("https://static.wixstatic.com/ufonts/5b81a2_24461c5d58d743049128689d51d8d57a/ttf/file.ttf") format("ttf");
+}
+@font-face {
+font-display: swap;
+font-family: wf_123b5683024f4cf5bf104edda;
+src: url("https://static.wixstatic.com/ufonts/5b81a2_123b5683024f4cf5bf104edda5fafb5f/woff2/file.woff2") format("woff2"),
+url("https://static.wixstatic.com/ufonts/5b81a2_123b5683024f4cf5bf104edda5fafb5f/woff/file.woff") format("woff"),
+url("https://static.wixstatic.com/ufonts/5b81a2_123b5683024f4cf5bf104edda5fafb5f/ttf/file.ttf") format("ttf");
+}</style><link type="text/css" rel="stylesheet" href="./fonts.hz267ac7fkkfb3a18o8z.css"><link type="text/css" rel="stylesheet" href="./wixMadefor.j95mkaziqjnrn77aekr8.css"><link type="text/css" rel="stylesheet" href="./google.kuw5gk7jh0nwy00zmif1.css"><style>:focus {
+    outline: none;
+}
+
+.js-focus-visible .focus-visible:focus,
+.js-focus-visible .focus-visible:focus ~ .wixSdkShowFocusOnSibling
+{
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.9), 0 0 1px 2px #3899EC;
+}
+</style><script src="./focus-visible.min.js" id="dynamic_script_FOCUS_VISIBLE"></script></head>
+<body class="js-focus-visible mac-os-x">
+
+    <div class="container body-content cBodyWidget">
+        <div class="twentytwenty-wrapper twentytwenty-horizontal"><div class="twentytwenty-container" style="height: 670px;">
+            <img id="imgBefore" loading="eager" class="img-before twentytwenty-before" alt="Before branding" src="./eb22ff_bc1f3e6f8d3449e3876fcca77724d395~mv2.jpeg" style="clip: rect(0px, 402px, 670px, 0px);">
+            <img id="imgAfter" loading="eager" class="img-after twentytwenty-after" alt="After branding" src="./eb22ff_8d6524f2ef794defa2c43cbfd9f07943~mv2.jpeg" style="clip: rect(0px, 804px, 670px, 402px);">
+
+                <a title="SmardtApps" class="copy">| BEFORE &amp; AFTER |<br><i>by SmardtApps.com</i></a>
+            
+            <div data-iframe-height="" class="twentytwenty-overlay">
+                <div class="twentytwenty-before-label"></div>
+                <div class="twentytwenty-after-label"></div>
+                <div class="cTools">
+                    <button class="btnFS" title="Full screen (f)" style="">
+                        <svg height="100%" version="1.1" viewBox="0 0 36 36" width="100%">
+                            <g class="ytp-fullscreen-button-corner-0"><use class="ytp-svg-shadow" xlink:href="#ytp-id-25"></use><path class="ytp-svg-fill" d="m 10,16 2,0 0,-4 4,0 0,-2 L 10,10 l 0,6 0,0 z" id="ytp-id-25"></path></g>
+                            <g class="ytp-fullscreen-button-corner-1"><use class="ytp-svg-shadow" xlink:href="#ytp-id-26"></use><path class="ytp-svg-fill" d="m 20,10 0,2 4,0 0,4 2,0 L 26,10 l -6,0 0,0 z" id="ytp-id-26"></path></g>
+                            <g class="ytp-fullscreen-button-corner-2"><use class="ytp-svg-shadow" xlink:href="#ytp-id-27"></use><path class="ytp-svg-fill" d="m 24,24 -4,0 0,2 L 26,26 l 0,-6 -2,0 0,4 0,0 z" id="ytp-id-27"></path></g>
+                            <g class="ytp-fullscreen-button-corner-3"><use class="ytp-svg-shadow" xlink:href="#ytp-id-28"></use><path class="ytp-svg-fill" d="M 12,20 10,20 10,26 l 6,0 0,-2 -4,0 0,-4 0,0 z" id="ytp-id-28"></path></g>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        <div class="twentytwenty-handle" style="left: 402px;"><span class="tt-arrow-before twentytwenty-left-arrow"></span><span class="tt-arrow-after twentytwenty-right-arrow"></span></div></div></div>
+    </div>
+
+    <script src="./jquery-2.1.3.js"></script>
+
+    <script type="text/JavaScript" src="./wix.min.js"></script>
+    <script src="./jquery.event.move.min.js"></script>
+    <script src="./jquery.tt.v3.js"></script>
+
+    <script>
+        var thisWidgetExceededLimit = false;
+        var autoPlay = false;
+        var autoPlayOffset = 50;
+        var autoPlayDirection = 1;
+        var initialOffset = 50;
+        var slider = null;
+        var sliderOrientation = 'horizontal';
+        var container;
+        var beforeImg;
+        var afterImg;
+        var w;
+        var h;
+        var smoothEnabled = true;
+        var autoPlayTransitionDuration = 10;
+        var smoothTransitionAnimation = "ease-in-out";
+        var isNewEditor = true;
+
+        $(window).load(function () {
+            log('$(window).load');
+            initOffset(50);
+            container = $(".twentytwenty-container");
+            beforeImg = container.find(".img-before");
+            afterImg = container.find(".img-after");
+            slider = container.find(".twentytwenty-handle");
+            refreshDimensions();
+
+            function initAutoSmooth() {
+                beforeImg[0].addEventListener("transitionend", loopTransition, false);
+                beforeImg[0].addEventListener("webkitTransitionEnd", loopTransition, false);
+                beforeImg[0].addEventListener("mozTransitionEnd", loopTransition, false);
+                beforeImg[0].addEventListener("msTransitionEnd", loopTransition, false);
+                beforeImg[0].addEventListener("oTransitionEnd", loopTransition, false);
+            }
+
+            function loopTransition(e) {
+                if (!autoPlay) return;
+                if (e.propertyName == "clip") {
+                    if (container.hasClass("smoothright")) {
+                        smoothLeft();
+                    } else {
+                        smoothRight();
+                    }
+                }
+            }
+
+            function autoPlaySmooth(){
+                if (!autoPlay) autoPlay = true;
+                smoothRight();
+            }
+
+            function smoothLeft() {
+                if (!autoPlay) return;
+                refreshDimensions();
+                container.removeClass("smoothright").addClass("smoothleft");
+                var clip = "rect(0, 0px," + (h * 3) + "px,0) ";
+                var clipAfter = "rect(0, " + w + "px," + (h * 3) + "px,0) ";
+                var direct = "left ";
+                if (sliderOrientation === 'vertical') {
+                    clip = "rect(0," + (w) + 'px, 0px,0) ';
+                    clipAfter = "rect(0," + (w) + "px, " + (getWidgetImageHeight()) + "px,0) ";
+                    direct = "top ";
+                }
+                var trans = 'clip ' + autoPlayTransitionDuration + 's ' + smoothTransitionAnimation;
+                beforeImg.css({ clip: clip, WebkitTransition: trans, MozTransition: trans, MsTransition: trans, OTransition: trans, transition: trans });
+                afterImg.css({ clip: clipAfter, WebkitTransition: trans, MozTransition: trans, MsTransition: trans, OTransition: trans, transition: trans });
+                if (sliderOrientation === 'vertical') {
+                    slider.css({ top: 0, WebkitTransition: direct + autoPlayTransitionDuration + 's ' + smoothTransitionAnimation, MozTransition: direct + autoPlayTransitionDuration + 's ' + smoothTransitionAnimation, MsTransition: direct + autoPlayTransitionDuration + 's ' + smoothTransitionAnimation, OTransition: direct + autoPlayTransitionDuration + 's ' + smoothTransitionAnimation, transition: direct + autoPlayTransitionDuration + 's ' + smoothTransitionAnimation });
+                } else {
+                    slider.css({ left: 0, WebkitTransition: direct + autoPlayTransitionDuration + 's ' + smoothTransitionAnimation, MozTransition: direct + autoPlayTransitionDuration + 's ' + smoothTransitionAnimation, MsTransition: direct + autoPlayTransitionDuration + 's ' + smoothTransitionAnimation, OTransition: direct + autoPlayTransitionDuration + 's ' + smoothTransitionAnimation, transition: direct + autoPlayTransitionDuration + 's ' + smoothTransitionAnimation });
+                }
+            }
+
+            function smoothRight() {
+                if (!autoPlay) return;
+                refreshDimensions();
+                container.removeClass("smoothleft").addClass("smoothright");
+                var clip = "rect(0," + w + "px," + (h * 3) + "px,0) ";
+                var clipAfter = "rect(0," + w + "px," + (h * 3) + "px," + w + "px) ";
+                var direct = "left ";
+                if (sliderOrientation === 'vertical') {
+                    clip = "rect(0," + (w) + "px," + (getWidgetImageHeight()) + "px,0) ";
+                    clipAfter = "rect(" + (getWidgetImageHeight()) + "px," + (w) + "px, " + (getWidgetImageHeight()) + "px,0) ";
+                    direct = "top ";
+                }
+                var trans = 'clip ' + autoPlayTransitionDuration + 's ' + smoothTransitionAnimation;
+                beforeImg.css({ clip: clip, WebkitTransition: trans, MozTransition: trans, MsTransition: trans, OTransition: trans, transition: trans });
+                afterImg.css({ clip: clipAfter, WebkitTransition: trans, MozTransition: trans, MsTransition: trans, OTransition: trans, transition: trans });
+                if (sliderOrientation === 'vertical') {
+                    slider.css({ top: getWidgetImageHeight(), WebkitTransition: direct + autoPlayTransitionDuration + 's ' + smoothTransitionAnimation, MozTransition: direct + autoPlayTransitionDuration + 's ' + smoothTransitionAnimation, MsTransition: direct + autoPlayTransitionDuration + 's ' + smoothTransitionAnimation, OTransition: direct + autoPlayTransitionDuration + 's ' + smoothTransitionAnimation, transition: direct + autoPlayTransitionDuration + 's ' + smoothTransitionAnimation });
+                } else {
+                    slider.css({ left: w, WebkitTransition: direct + autoPlayTransitionDuration + 's ' + smoothTransitionAnimation, MozTransition: direct + autoPlayTransitionDuration + 's ' + smoothTransitionAnimation, MsTransition: direct + autoPlayTransitionDuration + 's ' + smoothTransitionAnimation, OTransition: direct + autoPlayTransitionDuration + 's ' + smoothTransitionAnimation, transition: direct + autoPlayTransitionDuration + 's ' + smoothTransitionAnimation });
+                }
+            }
+
+            if(smoothEnabled) initAutoSmooth();
+            if(autoPlay && smoothEnabled){ autoPlaySmooth(); }
+            else if(autoPlay && !smoothEnabled){ autoPlayNextStep(); }
+
+            if (navigator.userAgent.indexOf('Mac OS X') > 0) $('body').addClass('mac-os-x');
+
+            try {
+                if (false == true) {
+                    Wix.Features.isSupported(Wix.Features.Types.RESIZE_COMPONENT, function (data) { isNewEditor = data; });
+                }
+            } catch (e) {
+                log('Wix Features error: ' + e.message);
+            }
+
+            if (isFullScreenAvailable() == false) $('.btnFS').hide();
+            $('.btnFS').click(function () { toggleFS(); });
+        });
+
+        function isFullScreenAvailable() {
+            return document.fullscreenEnabled || document.mozFullscreenEnabled || document.webkitFullscreenEnabled || document.msFullscreenEnabled;
+        }
+
+        function getreqfullscreen() {
+            var root = document.documentElement;
+            return root.requestFullscreen || root.webkitRequestFullscreen || root.mozRequestFullScreen || root.msRequestFullscreen;
+        }
+
+        function getexitfullscreen() {
+            return document.exitFullscreen || document.webkitExitFullscreen || document.mozCancelFullScreen || document.msExitFullscreen;
+        }
+
+        function getfullscreenelement() {
+            return document.fullscreenElement || document.webkitFullscreenElement || document.mozFullScreenElement || document.msFullscreenElement;
+        }
+
+        var globalreqfullscreen = getreqfullscreen();
+        var globalexitfullscreen = getexitfullscreen();
+
+        function getContainerRatio() {
+            return beforeImg.width() / getWidgetImageHeight();
+        }
+
+        var preFSScrollTop = 0;
+        function toggleFS() {
+            if (isFullScreenAvailable() == false) return;
+            if ( getfullscreenelement() == null) {
+                var ratio = getContainerRatio();
+                preFSScrollTop = parentScrollTop;
+                var docEl = $('.container')[0];
+                globalreqfullscreen.call(docEl);
+                var maxWidth = (ratio * window.screen.height);
+                if (maxWidth > window.screen.width) maxWidth = window.screen.width;
+                $('.container').addClass('fullscreen');
+                $('.twentytwenty-container').css('max-width', maxWidth + 'px');
+                log('fs:');
+                log(maxWidth);
+                if (navigator.userAgent.indexOf('Mac OS X')) {
+                    log('Mac OS X');
+                    $('.twentytwenty-container').css('width', maxWidth + 'px');
+                    $(window).trigger("resize.twentytwenty");
+                }
+                setTimeout(function () { loadImages(true); }, 800);
+            } else {
+                globalexitfullscreen.call(document);
+                onExitFS();
+            }
+        }
+
+        if (document.addEventListener) {
+            document.addEventListener('webkitfullscreenchange', onExitFS, false);
+            document.addEventListener('mozfullscreenchange', onExitFS, false);
+            document.addEventListener('fullscreenchange', onExitFS, false);
+            document.addEventListener('MSFullscreenChange', onExitFS, false);
+        }
+
+        function onExitFS() {
+            log('onExit');
+            if (!document.fullscreenElement && !document.webkitIsFullScreen && !document.mozFullScreen && !document.msFullscreenElement) {
+                log('Exit fired');
+                $('.container').removeClass('fullscreen');
+                $('.twentytwenty-container').css('max-width', '');
+                if (navigator.userAgent.indexOf('Mac OS X')) {
+                    $('.twentytwenty-container').css('width', '');
+                    $(window).trigger("resize.twentytwenty");
+                }
+                Wix.scrollTo(0, preFSScrollTop);
+            }
+        }
+
+        function getWidgetImageHeight() {
+            var ret = Math.min($(".twentytwenty-container img.img-before").height(), $(".twentytwenty-container img.img-after").height());
+            if (ret == 0) ret = Math.max($(".twentytwenty-container img.img-before").height(), $(".twentytwenty-container img.img-after").height());
+            if (ret == 0) ret = $(window).height();
+            log('getWidgetImageHeight: ' + ret);
+            return ret;
+        }
+
+        function setWidgetHeight() {
+            if (false == false) return;
+            log('setWidgetHeight');
+            $(".twentytwenty-container").width('auto');
+            var height = getWidgetImageHeight();
+            var width = $(".twentytwenty-container img").width();
+            if (height < 120) {
+                log('min height not achieved');
+                return;
+            }
+            if (isNewEditor == false) Wix.setHeight(height);
+            if (typeof Wix !== 'undefined' && Wix.resizeComponent) {
+                Wix.resizeComponent({ width: width, height: height });
+            }
+        }
+
+        function refreshDimensions(){
+            w = beforeImg.width();
+            h = beforeImg.height();
+            if (container.find("img.img-after").height() < h) h = container.find("img.img-after").height();
+            log('width:' + w);
+        }
+
+        function getWixImageUrl(rel, width, height, src) {
+            log('=== getWixImageUrl DEBUG ===');
+            log('Parameters: rel=' + rel + ', width=' + width + ', height=' + height + ', src=' + src);
+            if (rel && rel !== '' && width > 0 && height > 0) {
+                if (typeof Wix !== 'undefined' && Wix.Utils && Wix.Utils.Media) {
+                    var result = Wix.Utils.Media.getResizedImageUrl(rel, width, height);
+                    log('Wix SDK generated URL: ' + result);
+                    return result;
+                } else {
+                    log('Wix SDK not available, using fallback');
+                    var fallbackUrl = 'https://static.wixstatic.com/media/' + rel + '/v1/fill/w_' + width + ',h_' + height + '/file.jpg';
+                    log('Fallback URL: ' + fallbackUrl);
+                    return fallbackUrl;
+                }
+            }
+            log('Using original src: ' + src);
+            return src;
+        }
+
+        function getWixImageUrlOptimized(rel, width, height, src, fs) {
+            log('=== getWixImageUrlOptimized DEBUG ===');
+            log('Parameters: rel=' + rel + ', width=' + width + ', height=' + height + ', src=' + src + ', fs=' + fs);
+            if (rel && rel !== '' && (width <= 0 || height <= 0)) {
+                log('Missing dimensions detected, using fallback dimensions');
+                width = 1143; height = 1143;
+                log('Using fallback dimensions: ' + width + 'x' + height);
+            }
+            if (rel && rel !== '' && width > 0 && height > 0) {
+                var max = getImageMaxWidth();
+                if (fs) max = 2000;
+                var widthOpt = width;
+                var heightOpt = height;
+                if (width > max) {
+                    widthOpt = max;
+                    heightOpt = widthOpt * height / width;
+                }
+                log('Optimized dimensions: ' + widthOpt + 'x' + heightOpt);
+                if (typeof Wix !== 'undefined' && Wix.Utils && Wix.Utils.Media) {
+                    var result = Wix.Utils.Media.getResizedImageUrl(rel, widthOpt, heightOpt);
+                    log('Optimized Wix SDK URL: ' + result);
+                    return result;
+                } else {
+                    log('Wix SDK not available, using optimized fallback');
+                    var fallbackUrl = 'https://static.wixstatic.com/media/' + rel + '/v1/fill/w_' + widthOpt + ',h_' + heightOpt + '/file.jpg';
+                    log('Optimized fallback URL: ' + fallbackUrl);
+                    return fallbackUrl;
+                }
+            }
+            log('Using original src: ' + src);
+            return src;
+        }
+
+        function getImageMaxWidth() {
+            var width = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+            if (width > 1600) width = 1600;
+            if (false == true && width > 1200) width = 1200;
+            if (width <= 600) return 600;
+            if (width <= 1600) return width;
+            return 1600;
+        }
+
+        function loadImages(fs) {
+            log('=== LOAD IMAGES DEBUG ===');
+                
+                log('Loading images with ViewBag.Item data');
+                var beforeUrl = getWixImageUrlOptimized('eb22ff_bc1f3e6f8d3449e3876fcca77724d395~mv2.jpeg', 1872, 1560, 'https://wixbeforeafter.blob.core.windows.net/app/default_before.jpg', fs);
+                var afterUrl = getWixImageUrlOptimized('eb22ff_8d6524f2ef794defa2c43cbfd9f07943~mv2.jpeg', 1872, 1560, 'https://wixbeforeafter.blob.core.windows.net/app/default_after.jpg', fs);
+                log('Setting before image to: ' + beforeUrl);
+                log('Setting after image to: ' + afterUrl);
+                document.getElementById('imgBefore').src = beforeUrl;
+                document.getElementById('imgAfter').src = afterUrl;
+                
+            log('=== END LOAD IMAGES DEBUG ===');
+        }
+
+        function initLoadImages() {
+            log('=== INIT LOAD IMAGES DEBUG ===');
+            log('ViewBag.Item exists: true');
+                
+                log('Component data loaded successfully');
+                log('BeforeWixRelUri: "eb22ff_bc1f3e6f8d3449e3876fcca77724d395~mv2.jpeg"');
+                log('AfterWixRelUri: "eb22ff_8d6524f2ef794defa2c43cbfd9f07943~mv2.jpeg"');
+                log('BeforeWidth: 1872');
+                log('BeforeHeight: 1560');
+                log('AfterWidth: 1872');
+                log('AfterHeight: 1560');
+                log('BeforeImgSrc: "https://wixbeforeafter.blob.core.windows.net/app/default_before.jpg"');
+                log('AfterImgSrc: "https://wixbeforeafter.blob.core.windows.net/app/default_after.jpg"');
+                var beforeUrl, afterUrl;
+                var hasBeforeWixUri = 'eb22ff_bc1f3e6f8d3449e3876fcca77724d395~mv2.jpeg' !== '';
+                var hasAfterWixUri = 'eb22ff_8d6524f2ef794defa2c43cbfd9f07943~mv2.jpeg' !== '';
+                var hasBeforeDimensions = 1872 > 0;
+                var hasAfterDimensions = 1872 > 0;
+                log('Format detection: BeforeWixUri=' + hasBeforeWixUri + ', BeforeDimensions=' + hasBeforeDimensions);
+                log('Format detection: AfterWixUri=' + hasAfterWixUri + ', AfterDimensions=' + hasAfterDimensions);
+
+                if (hasBeforeWixUri && hasBeforeDimensions) {
+                    log('Using NEW format for before image (Wix Media)');
+                    beforeUrl = getWixImageUrlOptimized('eb22ff_bc1f3e6f8d3449e3876fcca77724d395~mv2.jpeg', 1872, 1560, 'https://wixbeforeafter.blob.core.windows.net/app/default_before.jpg');
+                } else if ('https://wixbeforeafter.blob.core.windows.net/app/default_before.jpg' !== '') {
+                    log('Using OLD format for before image (Blob Storage)');
+                    beforeUrl = 'https://wixbeforeafter.blob.core.windows.net/app/default_before.jpg';
+                } else {
+                    log('No valid before image source found, using default');
+                    beforeUrl = '/Content/Images/default_before.jpg';
+                }
+
+                if (hasAfterWixUri && hasAfterDimensions) {
+                    log('Using NEW format for after image (Wix Media)');
+                    afterUrl = getWixImageUrlOptimized('eb22ff_8d6524f2ef794defa2c43cbfd9f07943~mv2.jpeg', 1872, 1560, 'https://wixbeforeafter.blob.core.windows.net/app/default_after.jpg');
+                } else if ('https://wixbeforeafter.blob.core.windows.net/app/default_after.jpg' !== '') {
+                    log('Using OLD format for after image (Blob Storage)');
+                    afterUrl = 'https://wixbeforeafter.blob.core.windows.net/app/default_after.jpg';
+                } else {
+                    log('No valid after image source found, using default');
+                    afterUrl = '/Content/Images/default_after.jpg';
+                }
+
+                log('Final before URL: ' + beforeUrl);
+                log('Final after URL: ' + afterUrl);
+                document.getElementById('imgBefore').src = beforeUrl;
+                document.getElementById('imgAfter').src = afterUrl;
+                
+            log('=== END INIT LOAD IMAGES DEBUG ===');
+        }
+
+        initLoadImages();
+
+        function adjustSlider(pct) {
+            log('adjustSlider called with pct: ' + pct);
+            $(window).trigger("resize.twentytwenty", pct);
+        }
+
+        function initOffset(val){
+            initialOffset = val;
+            var def_offset_tt = parseFloat(initialOffset) / 100.0;
+            log('initOffset: ' + def_offset_tt);
+            if (slider == null)
+                slider = $(".twentytwenty-container").twentytwenty({ default_offset_pct: def_offset_tt, orientation: sliderOrientation });
+            else
+                adjustSlider(def_offset_tt);
+            autoPlayOffset = initialOffset;
+        }
+
+        function stopAutoPlay(){
+            if (autoPlay == false) return;
+            autoPlay = false;
+            var offset_tt = parseFloat(initialOffset) / 100.0;
+            adjustSlider(offset_tt);
+        }
+
+        function autoPlayNextStep(){
+            if (!autoPlay) return;
+            if (autoPlayOffset >= 90) autoPlayDirection = -1;
+            else if (autoPlayOffset <= 10) autoPlayDirection = 1;
+            autoPlayOffset=autoPlayOffset + (0.5* autoPlayDirection);
+            var offset_tt = parseFloat(autoPlayOffset) / 100.0;
+            adjustSlider(offset_tt);
+            setTimeout(function(){ autoPlayNextStep(); }, 150);
+        }
+
+        function changeOrientation(val) {
+            sliderOrientation = val;
+            var def_offset_tt = parseFloat(initialOffset) / 100.0;
+            $(window).trigger("changeOrientation.twentytwenty", val);
+        }
+
+        function smoothStop(){
+            if(!smoothEnabled) return;
+            if (!autoPlay) return;
+            autoPlay = false;
+            beforeImg.css("-webkit-transition", '');
+            beforeImg.css("-moz-transition", '');
+            beforeImg.css("-o-transition", '');
+            beforeImg.css("-ms-transition", '');
+            beforeImg.css("transition", '');
+            afterImg.css("-webkit-transition", '');
+            afterImg.css("-moz-transition", '');
+            afterImg.css("-o-transition", '');
+            afterImg.css("-ms-transition", '');
+            afterImg.css("transition", '');
+            slider.css("transition", '');
+            slider.css("-webkit-transition", '');
+            slider.css("-moz-transition", '');
+            slider.css("-o-transition", '');
+            slider.css("-ms-transition", '');
+            var offset_tt = parseFloat(initialOffset) / 100.0;
+            adjustSlider(offset_tt);
+        }
+
+        var lastWidth = 0;
+        var lastHeight = 0;
+        var resizeTimeout;
+        function onResizeDebounced() {
+            clearTimeout(resizeTimeout);
+            resizeTimeout = setTimeout(function () { onResize(); }, 350);
+        }
+
+        function onResize() {
+            if ( false == false) return;
+            var newWidth = $(window).width();
+            var newHeight = $(window).height();
+            log('onresize DEB:' + lastHeight + ';' + lastWidth + '>' + newHeight + ';' + newWidth);
+            if (lastWidth != newWidth || isNewEditor == false) {
+                setWidgetHeight();
+            }
+            lastWidth = newWidth;
+            lastHeight = newHeight;
+            if (autoPlay) {
+                setTimeout(function () { resetAutoPlay(); }, 75);
+            }
+        }
+
+        function resetAutoPlay() {
+            smoothStop();
+            autoPlaySmooth();
+        }
+
+        $(function () {
+            registerEventListeners();
+            $(".twentytwenty-container img").load(function () {
+                log('Image loaded: ' + this.src);
+            });
+            $('.twentytwenty-container').on('click mouseover touchstart', function () {
+                smoothStop();
+            });
+            $(window).on('resize', function () {
+                log('Window resized');
+                onResizeDebounced();
+            });
+        });
+
+        Wix.onReady(() => {
+            log('Wix site is fully rendered now');
+        });
+
+        var parentScrollTop = 0;
+        function registerEventListeners() {
+            log('registering EVENTS');
+            Wix.addEventListener(Wix.Events.COMPONENT_DELETED, function (data) {
+                log('Component deleted');
+                delWidget('comp-l4fiodhb');
+            });
+            Wix.addEventListener(Wix.Events.SITE_PUBLISHED, function (data) {
+                log('Site published: comp-l4fiodhb ' + Date.now());
+                changeStatus('site_published');
+            });
+            Wix.addEventListener(Wix.Events.SETTINGS_UPDATED, onSettingsUpdate);
+            Wix.addEventListener(Wix.Events.STATE_CHANGED, function (event) {
+                log("StateChanged: " + event);
+            });
+            Wix.addEventListener(Wix.Events.SCROLL, function (event) {
+                parentScrollTop = event.scrollTop;
+            });
+        }
+
+        function onSettingsUpdate(update) {
+            log('Settings updated for comp-l4fiodhb: ' + update.key + ' = ' + update.value);
+            softUpdate(update.key, update.value);
+        }
+
+        function softUpdate(key, value) {
+            log('Soft update: ' + key + ' = ' + value);
+            if (key == 'imagePreviewBefore') {
+                var img = document.getElementById('imgBefore');
+                img.onload = function () { log('refresh image height'); setWidgetHeight(); }
+                img.src = value;
+            } else if (key == 'imagePreviewAfter') {
+                var img = document.getElementById('imgAfter');
+                img.onload = function () { log('refresh image height'); setWidgetHeight(); }
+                img.src = value;
+            } else if (key == 'textBefore') {
+                if (value) $('<style>.twentytwenty-before-label:before{content:"' + value + '"}</style>').appendTo('head');
+                else $('<style>.twentytwenty-before-label:before{content:none}</style>').appendTo('head');
+            } else if (key == 'textAfter') {
+                if (value) $('<style>.twentytwenty-after-label:before{content:"' + value + '"}</style>').appendTo('head');
+                else $('<style>.twentytwenty-after-label:before{content:none}</style>').appendTo('head');
+            } else if (key == 'slidOrientation') {
+                changeOrientation(value);
+                if (autoPlay == true) resetAutoPlay();
+            } else if (key == 'showFullScreen') {
+                if (value == true) $('.btnFS').show();
+                else $('.btnFS').hide();
+            } else if (key == 'ttStartSlider') {
+                initOffset(value);
+                if (autoPlay == true) resetAutoPlay();
+            } else if (key == 'autoPlay') {
+                if (value == true) { autoPlay = true; autoPlaySmooth(); }
+                else{ smoothStop(); }
+            } else if (key == 'autoPlayCycleTime') {
+                autoPlayTransitionDuration = 21 - value;
+                smoothStop();
+                autoPlaySmooth();
+            }
+        }
+
+        function getQueryParameter(name) {
+            name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+            var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+                results = regex.exec(location.search);
+            return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+        }
+
+        function delWidget(c) {
+            var instance = "instance=" + getQueryParameter('instance') + '&compid=' + Wix.Utils.getOrigCompId();
+            var compId = c;
+            $.ajax({
+                type: 'POST',
+                url: '/wix/DeleteWidget?' + instance,
+                data: { compId: compId },
+                success: function (res) { log("Widget deleted: " + res); },
+                async: false
+            });
+        }
+
+        function changeStatus(c) {
+            var instance = "instance=" + getQueryParameter('instance') + '&compid=' + Wix.Utils.getOrigCompId();
+            var now = new Date().getTime();
+            if (localStorage.getItem('pubStamp')) {
+                var last = parseInt(localStorage.getItem('pubStamp'));
+                if (now - last < 300) {
+                    log('Publish skipped - too recent: ' + (now - last));
+                    return;
+                }
+            }
+            localStorage.setItem('pubStamp', now);
+            $.post('/wix/PublishWebsite?' + instance, { instanceid: Wix.Utils.getInstanceId()}, function (res) {
+                log("Publish completed: " + res);
+            });
+        }
+    </script>
+<script defer="" src="./vcd15cbe7772f49c399c6a5babf22c1241717689176015" integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ==" data-cf-beacon="{&quot;version&quot;:&quot;2024.11.0&quot;,&quot;token&quot;:&quot;5359a7ecabb547f4bde129bf0dc0e301&quot;,&quot;r&quot;:1,&quot;server_timing&quot;:{&quot;name&quot;:{&quot;cfCacheStatus&quot;:true,&quot;cfEdge&quot;:true,&quot;cfExtPri&quot;:true,&quot;cfL4&quot;:true,&quot;cfOrigin&quot;:true,&quot;cfSpeedBrain&quot;:true},&quot;location_startswith&quot;:null}}" crossorigin="anonymous"></script>
+
+</body></html>

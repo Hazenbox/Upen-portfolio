@@ -1,0 +1,44 @@
+﻿/* widget */
+
+body {margin:0;}
+
+.twentytwenty-container img {
+    width: 100%; 
+    }
+
+a.copy {
+    position:absolute; 
+    display:block;
+    z-index:35;
+    right:15px;     
+    bottom:15px; 
+    color: #FFF;
+    font-size:15px;
+    font-family:Arial;
+    text-align:right;
+    text-shadow: 1px 1px 3px #333;
+    text-rendering: optimizelegibility;
+    text-decoration:none;
+    line-height:20px;
+}
+a.copy i {
+    font-size:12px;
+}
+a.copy:hover, a.copy:active, a.copy:focus {
+    color: #FFF;
+    text-decoration:none;
+}
+
+.limitReachedTooltip {
+    position: fixed;
+    top: 5px;
+    left:50%;
+    margin-left: -129px;
+    z-index: 10;
+}
+
+body:not(.mac-os-x) .fullscreen .twentytwenty-wrapper {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+}

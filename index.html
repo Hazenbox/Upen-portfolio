@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Designer Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Onest:wght@100..900&family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet" />
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['Onest', 'sans-serif'],
+              display: ['Syne', 'sans-serif'],
+            },
+            colors: {
+              // Semantic Colors mapped to CSS Variables
+              page: 'rgb(var(--color-page) / <alpha-value>)',
+              panel: 'rgb(var(--color-panel) / <alpha-value>)',
+              ink: 'rgb(var(--color-ink) / <alpha-value>)',
+              muted: 'rgb(var(--color-muted) / <alpha-value>)',
+              line: 'rgb(var(--color-line) / <alpha-value>)',
+              accent: 'rgb(var(--color-accent) / <alpha-value>)',
+            },
+            backgroundImage: {
+              'noise': "url('https://grainy-gradients.vercel.app/noise.svg')",
+            },
+          },
+        },
+      }
+    </script>
+    <style>
+      :root { 
+        font-family: 'Onest', sans-serif; 
+        transition: background-color 0.3s ease, color 0.3s ease;
+      }
+      
+      /* --- THEME DEFINITIONS (RGB values for Tailwind opacity support) --- */
+      
+      /* 1. Light - Pure White BG, Cool Grey Panels */
+      .theme-light {
+        --color-page: 255 255 255;   /* #FFFFFF */
+        --color-panel: 248 250 252;  /* #F8FAFC (Slate 50) */
+        --color-ink: 15 23 42;       /* #0F172A */
+        --color-muted: 100 116 139;  /* #64748B */
+        --color-line: 226 232 240;   /* #E2E8F0 */
+        --color-accent: 15 23 42;    /* #0F172A */
+      }
+
+      /* 2. Soft - Gentle, Rose, Calming */
+      .theme-soft {
+        --color-page: 255 245 246;   /* #FFF5F6 */
+        --color-panel: 255 255 255;  /* #FFFFFF */
+        --color-ink: 136 19 55;      /* #881337 */
+        --color-muted: 190 140 150;  /* #BE8C96 */
+        --color-line: 254 215 220;   /* #FED7DC */
+        --color-accent: 225 29 72;   /* Rose */
+      }
+
+      /* 3. Retro - Warm, Nostalgic, Beige */
+      .theme-retro {
+        --color-page: 242 238 230;   /* #F2EEE6 */
+        --color-panel: 253 250 245;  /* #FDFAF5 */
+        --color-ink: 74 62 55;       /* #4A3E37 */
+        --color-muted: 156 145 135;  /* #9C9187 */
+        --color-line: 214 206 198;   /* #D6CEC6 */
+        --color-accent: 217 119 6;   /* Amber */
+      }
+
+      /* 4. Organic - Sage, Earthy, Fresh */
+      .theme-organic {
+        --color-page: 240 244 240;   /* #F0F4F0 */
+        --color-panel: 247 249 247;  /* #F7F9F7 */
+        --color-ink: 45 58 45;       /* #2D3A2D */
+        --color-muted: 141 163 141;  /* #8DA38D */
+        --color-line: 220 227 220;   /* #DCE3DC */
+        --color-accent: 79 122 79;   /* #4F7A4F */
+      }
+
+      /* 5. Breeze - Airy, Blue, Sky */
+      .theme-breeze {
+        --color-page: 240 247 255;   /* #F0F7FF */
+        --color-panel: 248 251 255;  /* #F8FBFF */
+        --color-ink: 15 44 74;       /* #0F2C4A */
+        --color-muted: 139 163 184;  /* #8BA3B8 */
+        --color-line: 209 224 240;   /* #D1E0F0 */
+        --color-accent: 59 130 246;  /* #3B82F6 */
+      }
+
+      /* 6. Dusk - Twilight, Purple, Deep */
+      .theme-dusk {
+        --color-page: 30 27 46;      /* #1E1B2E */
+        --color-panel: 42 38 64;     /* #2A2640 */
+        --color-ink: 226 217 243;    /* #E2D9F3 */
+        --color-muted: 126 116 152;  /* #7E7498 */
+        --color-line: 63 58 88;      /* #3F3A58 */
+        --color-accent: 139 92 246;  /* #8B5CF6 */
+      }
+
+      /* 7. Ember - Warm Dark, Coal, Orange */
+      .theme-ember {
+        --color-page: 34 21 16;      /* #221510 */
+        --color-panel: 56 34 24;     /* #382218 */
+        --color-ink: 250 212 192;    /* #FAD4C0 */
+        --color-muted: 168 139 128;  /* #A88B80 */
+        --color-line: 84 58 48;      /* #543A30 */
+        --color-accent: 249 115 22;  /* #F97316 */
+      }
+
+      /* 8. Void - Deep Navy, Tech */
+      .theme-void {
+        --color-page: 11 15 25;      /* #0B0F19 */
+        --color-panel: 21 27 43;     /* #151B2B */
+        --color-ink: 224 231 255;    /* #E0E7FF */
+        --color-muted: 100 116 139;  /* #64748B */
+        --color-line: 30 41 59;      /* #1E293B */
+        --color-accent: 96 165 250;  /* Blue */
+      }
+
+      /* 9. Dark - Deep Black BG, Dark Grey Panels */
+      .theme-dark {
+        --color-page: 4 4 4;         /* #040404 */
+        --color-panel: 20 22 25;     /* Dark Cool Grey Surface */
+        --color-ink: 241 245 249;    /* #F1F5F9 */
+        --color-muted: 148 163 184;  /* #94A3B8 */
+        --color-line: 39 44 54;      /* Dark Slate Border */
+        --color-accent: 248 250 252; /* #F8FAFC */
+      }
+
+      ::-webkit-scrollbar {
+        width: 0px;
+        background: transparent;
+      }
+      html {
+        -webkit-tap-highlight-color: transparent;
+      }
+      body {
+        background-color: rgb(var(--color-page));
+        color: rgb(var(--color-ink));
+        -webkit-font-smoothing: antialiased;
+        text-rendering: optimizeLegibility;
+      }
+      
+      /* Ensure images render crisply */
+      img {
+        image-rendering: auto;
+        -webkit-image-rendering: auto;
+        image-rendering: -webkit-optimize-contrast;
+        max-width: 100%;
+        height: auto;
+        display: block;
+      }
+      
+      /* Icon Utility - Line Rounded Thin */
+      .material-symbols-rounded {
+        font-family: 'Material Symbols Rounded';
+        font-weight: normal;
+        font-style: normal;
+        font-size: 24px;
+        line-height: 1;
+        letter-spacing: normal;
+        text-transform: none;
+        display: inline-block;
+        white-space: nowrap;
+        word-wrap: normal;
+        direction: ltr;
+        -webkit-font-feature-settings: 'liga';
+        -webkit-font-smoothing: antialiased;
+        /* Thin Weight (200), No Fill (0) */
+        font-variation-settings: 'FILL' 0, 'wght' 200, 'GRAD' 0, 'opsz' 24;
+      }
+      .material-symbols-rounded.filled {
+        font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+
+      /* Hide Unicorn Studio badge/attribution */
+      [data-us-project] a[href*="unicorn.studio"],
+      [data-us-project] a[href*="unicornstudio"],
+      [data-us-project] a[target="_blank"],
+      [data-us-project] a[rel*="noopener"],
+      [data-us-project] > a {
+        display: none !important;
+        visibility: hidden !important;
+        opacity: 0 !important;
+        pointer-events: none !important;
+        height: 0 !important;
+        width: 0 !important;
+        overflow: hidden !important;
+      }
+      
+      /* Hide any badge/credit elements */
+      [data-us-project]::after,
+      [data-us-project]::before {
+        display: none !important;
+        content: none !important;
+      }
+
+      /* Aggressively hide center watermarks and overlays */
+      [data-us-project] canvas[style*="position"],
+      [data-us-project] div[style*="position: absolute"][style*="top: 50%"],
+      [data-us-project] div[style*="position: absolute"][style*="left: 50%"],
+      [data-us-project] div[style*="transform: translate(-50%, -50%)"],
+      [data-us-project] div[style*="center"],
+      [data-us-project] *[class*="watermark"],
+      [data-us-project] *[class*="badge"],
+      [data-us-project] *[class*="credit"],
+      [data-us-project] *[id*="watermark"],
+      [data-us-project] *[id*="badge"],
+      [data-us-project] *[id*="credit"] {
+        display: none !important;
+        visibility: hidden !important;
+        opacity: 0 !important;
+        pointer-events: none !important;
+        height: 0 !important;
+        width: 0 !important;
+        overflow: hidden !important;
+        position: absolute !important;
+        left: -9999px !important;
+        top: -9999px !important;
+      }
+
+      /* Hide any element positioned in center (watermark pattern) */
+      [data-us-project] > * > * {
+        position: relative;
+      }
+      
+      [data-us-project] *[style*="50%"][style*="50%"] {
+        display: none !important;
+        visibility: hidden !important;
+        opacity: 0 !important;
+      }
+
+      /* Hide SVG watermarks */
+      [data-us-project] svg[style*="position"],
+      [data-us-project] svg[style*="absolute"],
+      [data-us-project] svg[style*="fixed"] {
+        display: none !important;
+        visibility: hidden !important;
+        opacity: 0 !important;
+      }
+
+      /* Hide image overlays that might be watermarks */
+      [data-us-project] img[style*="position: absolute"],
+      [data-us-project] img[style*="position: fixed"] {
+        display: none !important;
+        visibility: hidden !important;
+        opacity: 0 !important;
+      }
+
+      /* Hide any div overlays */
+      [data-us-project] div[style*="z-index"] {
+        /* Only hide if it's a small centered overlay */
+      }
+
+      /* Nuclear option: hide any small centered elements */
+      [data-us-project] * {
+        position: relative;
+      }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.1/",
+    "@google/genai": "https://aistudiocdn.com/@google/genai@^1.31.0",
+    "react/": "https://aistudiocdn.com/react@^19.2.1/",
+    "react": "https://aistudiocdn.com/react@^19.2.1",
+    "framer-motion": "https://aistudiocdn.com/framer-motion@^11.0.8"
+  }
+}
+</script>
+    <link rel="stylesheet" href="/index.css">
+    <!-- Unicorn Studio SDK -->
+    <script type="text/javascript">
+      !function(){if(!window.UnicornStudio){window.UnicornStudio={isInitialized:!1};var i=document.createElement("script");i.src="https://cdn.jsdelivr.net/gh/hiunicornstudio/unicornstudio.js@v1.5.2/dist/unicornStudio.umd.js",i.async=true,i.onload=function(){window.UnicornStudio.isInitialized||(UnicornStudio.init(),window.UnicornStudio.isInitialized=!0)},(document.head || document.body).appendChild(i)}}();
+    </script>
+</head>
+  <body>
+    <div id="root"></div>
+  <script type="module" src="/index.tsx"></script>
+</body>
+</html>
