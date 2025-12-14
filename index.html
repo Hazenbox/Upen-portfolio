@@ -7,14 +7,15 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Onest:wght@100..900&family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/geist@latest/geist.css">
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet" />
     <script>
       tailwind.config = {
         theme: {
           extend: {
             fontFamily: {
-              sans: ['Onest', 'sans-serif'],
+              sans: ['Geist', 'sans-serif'],
               display: ['Syne', 'sans-serif'],
             },
             colors: {
@@ -25,6 +26,7 @@
               muted: 'rgb(var(--color-muted) / <alpha-value>)',
               line: 'rgb(var(--color-line) / <alpha-value>)',
               accent: 'rgb(var(--color-accent) / <alpha-value>)',
+              hover: 'rgb(var(--color-hover) / <alpha-value>)',
             },
             backgroundImage: {
               'noise': "url('https://grainy-gradients.vercel.app/noise.svg')",
@@ -35,7 +37,7 @@
     </script>
     <style>
       :root { 
-        font-family: 'Onest', sans-serif; 
+        font-family: 'Geist', sans-serif; 
         transition: background-color 0.3s ease, color 0.3s ease;
       }
       
@@ -49,6 +51,7 @@
         --color-muted: 100 116 139;  /* #64748B */
         --color-line: 226 232 240;   /* #E2E8F0 */
         --color-accent: 15 23 42;    /* #0F172A */
+        --color-hover: 241 245 249;  /* #F1F5F9 (Slate 100 - subtle grey) */
       }
 
       /* 2. Soft - Gentle, Rose, Calming */
@@ -59,6 +62,7 @@
         --color-muted: 190 140 150;  /* #BE8C96 */
         --color-line: 254 215 220;   /* #FED7DC */
         --color-accent: 225 29 72;   /* Rose */
+        --color-hover: 225 190 200;  /* #E1BEC8 (darker rose shade) */
       }
 
       /* 3. Retro - Warm, Nostalgic, Beige */
@@ -69,6 +73,7 @@
         --color-muted: 156 145 135;  /* #9C9187 */
         --color-line: 214 206 198;   /* #D6CEC6 */
         --color-accent: 217 119 6;   /* Amber */
+        --color-hover: 200 190 175;  /* #C8BEAF (darker beige shade) */
       }
 
       /* 4. Organic - Sage, Earthy, Fresh */
@@ -79,6 +84,7 @@
         --color-muted: 141 163 141;  /* #8DA38D */
         --color-line: 220 227 220;   /* #DCE3DC */
         --color-accent: 79 122 79;   /* #4F7A4F */
+        --color-hover: 180 200 180;  /* #B4C8B4 (darker sage shade) */
       }
 
       /* 5. Breeze - Airy, Blue, Sky */
@@ -89,6 +95,7 @@
         --color-muted: 139 163 184;  /* #8BA3B8 */
         --color-line: 209 224 240;   /* #D1E0F0 */
         --color-accent: 59 130 246;  /* #3B82F6 */
+        --color-hover: 180 210 240;  /* #B4D2F0 (darker blue shade) */
       }
 
       /* 6. Dusk - Twilight, Purple, Deep */
@@ -99,6 +106,7 @@
         --color-muted: 126 116 152;  /* #7E7498 */
         --color-line: 63 58 88;      /* #3F3A58 */
         --color-accent: 139 92 246;  /* #8B5CF6 */
+        --color-hover: 55 48 80;     /* #373050 (lighter purple-grey) */
       }
 
       /* 7. Ember - Warm Dark, Coal, Orange */
@@ -109,6 +117,7 @@
         --color-muted: 168 139 128;  /* #A88B80 */
         --color-line: 84 58 48;      /* #543A30 */
         --color-accent: 249 115 22;  /* #F97316 */
+        --color-hover: 72 44 32;     /* #482C20 (lighter warm tone) */
       }
 
       /* 8. Void - Deep Navy, Tech */
@@ -119,6 +128,7 @@
         --color-muted: 100 116 139;  /* #64748B */
         --color-line: 30 41 59;      /* #1E293B */
         --color-accent: 96 165 250;  /* Blue */
+        --color-hover: 30 41 59;     /* #1E293B (lighter navy-grey) */
       }
 
       /* 9. Dark - Deep Black BG, Dark Grey Panels */
@@ -129,6 +139,7 @@
         --color-muted: 148 163 184;  /* #94A3B8 */
         --color-line: 39 44 54;      /* Dark Slate Border */
         --color-accent: 248 250 252; /* #F8FAFC */
+        --color-hover: 30 33 38;     /* #1E2126 (lighter dark grey) */
       }
 
       ::-webkit-scrollbar {
@@ -176,6 +187,110 @@
       .material-symbols-rounded.filled {
         font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
       }
+
+      /* Work items hover background - 100% opacity for first light theme, 40% for others */
+      .theme-light .work-item-hover:hover {
+        background-color: rgb(var(--color-hover) / 1) !important;
+      }
+      .work-item-hover:hover {
+        background-color: rgb(var(--color-hover) / 0.4) !important;
+      }
+
+      /* Make divider more evident on hover for light themes */
+      .theme-light .work-item-hover:hover .divider-line,
+      .theme-soft .work-item-hover:hover .divider-line,
+      .theme-retro .work-item-hover:hover .divider-line,
+      .theme-organic .work-item-hover:hover .divider-line,
+      .theme-breeze .work-item-hover:hover .divider-line {
+        background-color: rgb(var(--color-line) / 1) !important;
+      }
+
+      /* Experience card default background - subtle dark in light modes */
+      .theme-light .experience-card-hover,
+      .theme-soft .experience-card-hover,
+      .theme-retro .experience-card-hover,
+      .theme-organic .experience-card-hover,
+      .theme-breeze .experience-card-hover {
+        background-color: rgb(15 23 42 / 0.03) !important;
+      }
+
+      /* Testimonial card default background - subtle dark in light modes */
+      .theme-light .testimonial-card,
+      .theme-soft .testimonial-card,
+      .theme-retro .testimonial-card,
+      .theme-organic .testimonial-card,
+      .theme-breeze .testimonial-card {
+        background-color: rgb(15 23 42 / 0.03) !important;
+      }
+
+      /* Experience card hover effects - match work items hover */
+      .theme-light .experience-card-hover:hover {
+        background-color: rgb(var(--color-hover) / 1) !important;
+      }
+      .theme-soft .experience-card-hover:hover,
+      .theme-retro .experience-card-hover:hover,
+      .theme-organic .experience-card-hover:hover,
+      .theme-breeze .experience-card-hover:hover {
+        background-color: rgb(var(--color-hover) / 0.4) !important;
+      }
+
+      /* Dark themes: lighter on hover */
+      .theme-dusk .experience-card-hover:hover,
+      .theme-ember .experience-card-hover:hover,
+      .theme-void .experience-card-hover:hover,
+      .theme-dark .experience-card-hover:hover {
+        background-color: rgb(var(--color-hover) / 1) !important;
+      }
+
+      /* Theme switcher container default background - use hover color as default */
+      .theme-light .theme-switcher-container {
+        background-color: rgb(var(--color-hover) / 1) !important;
+      }
+      .theme-soft .theme-switcher-container,
+      .theme-retro .theme-switcher-container,
+      .theme-organic .theme-switcher-container,
+      .theme-breeze .theme-switcher-container {
+        background-color: rgb(var(--color-hover) / 0.4) !important;
+      }
+      .theme-dusk .theme-switcher-container,
+      .theme-ember .theme-switcher-container,
+      .theme-void .theme-switcher-container,
+      .theme-dark .theme-switcher-container {
+        background-color: rgb(var(--color-hover) / 1) !important;
+      }
+
+      /* Slider component background - make more evident across all themes */
+      .theme-light .theme-switcher-slider,
+      .theme-soft .theme-switcher-slider,
+      .theme-retro .theme-switcher-slider,
+      .theme-organic .theme-switcher-slider,
+      .theme-breeze .theme-switcher-slider {
+        background-color: rgb(15 23 42 / 0.15) !important;
+      }
+      .theme-dusk .theme-switcher-slider,
+      .theme-ember .theme-switcher-slider,
+      .theme-void .theme-switcher-slider,
+      .theme-dark .theme-switcher-slider {
+        background-color: rgb(255 255 255 / 0.1) !important;
+      }
+
+      /* Segment lines - match parent container background color */
+      .theme-light .theme-switcher-segment-line {
+        background-color: rgb(var(--color-hover) / 1) !important;
+      }
+      .theme-soft .theme-switcher-segment-line,
+      .theme-retro .theme-switcher-segment-line,
+      .theme-organic .theme-switcher-segment-line,
+      .theme-breeze .theme-switcher-segment-line {
+        background-color: rgb(var(--color-hover) / 0.4) !important;
+      }
+      .theme-dusk .theme-switcher-segment-line,
+      .theme-ember .theme-switcher-segment-line,
+      .theme-void .theme-switcher-segment-line,
+      .theme-dark .theme-switcher-segment-line {
+        background-color: rgb(var(--color-hover) / 1) !important;
+      }
+
 
       /* Hide Unicorn Studio badge/attribution */
       [data-us-project] a[href*="unicorn.studio"],

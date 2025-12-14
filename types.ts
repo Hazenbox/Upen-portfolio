@@ -6,6 +6,7 @@ export interface Project {
   id: number;
   title: string;
   category: string;
+  industry?: string;
   image: string;
   description: string;
   link?: string;
@@ -25,6 +26,7 @@ export interface Testimonial {
   text: string;
   author: string;
   position: string;
+  image?: string;
 }
 
 export interface SocialLink {

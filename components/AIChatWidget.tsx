@@ -106,6 +106,29 @@ const AIChatWidget: React.FC = () => {
   const [isLoading, setIsLoading] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const idleTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const [isPresentationMode, setIsPresentationMode] = useState(false);
+
+  // Check if presentation mode is active
+  useEffect(() => {
+    const checkPresentationMode = () => {
+      const presentationOverlay = document.querySelector('[class*="z-[90]"]') as HTMLElement;
+      const isActive = presentationOverlay && window.getComputedStyle(presentationOverlay).opacity !== '0' && presentationOverlay.style.display !== 'none';
+      setIsPresentationMode(isActive);
+    };
+
+    // Check initially and on mutations
+    checkPresentationMode();
+    const observer = new MutationObserver(checkPresentationMode);
+    observer.observe(document.body, { childList: true, subtree: true, attributes: true, attributeFilter: ['class', 'style'] });
+    
+    // Also check periodically as a fallback
+    const interval = setInterval(checkPresentationMode, 100);
+
+    return () => {
+      observer.disconnect();
+      clearInterval(interval);
+    };
+  }, []);
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -261,6 +284,11 @@ const AIChatWidget: React.FC = () => {
       return updated;
     });
   };
+
+  // Hide widget if presentation mode is active - use conditional rendering instead of early return
+  if (isPresentationMode) {
+    return null;
+  }
 
   return (
     <div className="fixed bottom-11 right-12 z-40 flex flex-col items-end pointer-events-none">
