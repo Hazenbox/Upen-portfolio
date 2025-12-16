@@ -1,8 +1,9 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import FloatingNav from './components/FloatingNav';
 import AIChatWidget from './components/AIChatWidget';
 import ThemeSwitcher from './components/ThemeSwitcher';
+import TopBar from './components/TopBar';
+import CompanyLogo from './components/CompanyLogo';
 import HiverCaseStudy from './components/HiverCaseStudy';
 import AgentClientConnectionsCaseStudy from './components/AgentClientConnectionsCaseStudy';
 import HiverExperienceRedesignCaseStudy from './components/HiverExperienceRedesignCaseStudy';
@@ -73,39 +74,21 @@ const projects: Project[] = [
 const labs = [
   {
     id: 101,
-    title: "React Canvas",
-    description: "Generative art study.",
-    image: "https://picsum.photos/200/200?random=10"
+    title: "Goodeeds",
+    description: "Social impact platform.",
+    image: "/Projects/goodeeds.png"
   },
   {
     id: 102,
-    title: "Type Scale",
-    description: "Typography tool.",
-    image: "https://picsum.photos/200/200?random=11"
+    title: "KidsTube",
+    description: "Children's content platform.",
+    image: "/Projects/kidstube.png"
   },
   {
     id: 103,
-    title: "Dark Mode",
-    description: "Theme switcher.",
-    image: "https://picsum.photos/200/200?random=12"
-  },
-  {
-    id: 104,
-    title: "Icon Set",
-    description: "Open source icons.",
-    image: "https://picsum.photos/200/200?random=13"
-  },
-  {
-    id: 105,
-    title: "Motion Lib",
-    description: "Animation presets.",
-    image: "https://picsum.photos/200/200?random=14"
-  },
-  {
-    id: 106,
-    title: "Color Gen",
-    description: "Palette generator.",
-    image: "https://picsum.photos/200/200?random=15"
+    title: "Print Grid",
+    description: "Print layout tool.",
+    image: "/Projects/print-grid.png"
   }
 ];
 
@@ -115,7 +98,7 @@ const experience: (Experience & { color: string, tag: string })[] = [
     id: 1,
     role: "Design Lead",
     company: "Jio",
-    period: "Feb 2023 — Present",
+    period: "2023 — Present",
     description: "",
     color: "bg-blue-500",
     tag: "Design Systems",
@@ -131,7 +114,7 @@ const experience: (Experience & { color: string, tag: string })[] = [
     id: 2,
     role: "Senior Product Designer",
     company: "Compass",
-    period: "Jul 2020 — Jan 2023",
+    period: "2020 — 2023",
     description: "",
     color: "bg-gray-800",
     tag: "Growth & Search",
@@ -146,7 +129,7 @@ const experience: (Experience & { color: string, tag: string })[] = [
     id: 3,
     role: "Product Designer",
     company: "Hiver",
-    period: "Feb 2019 — Jun 2020",
+    period: "2019 — 2020",
     description: "",
     color: "bg-yellow-500",
     tag: "SaaS Analytics",
@@ -159,7 +142,7 @@ const experience: (Experience & { color: string, tag: string })[] = [
     id: 4,
     role: "UX Designer",
     company: "iB Hubs",
-    period: "Jun 2016 — Dec 2018",
+    period: "2016 — 2018",
     description: "",
     color: "bg-red-500",
     tag: "Multi-Product",
@@ -195,8 +178,7 @@ const testimonials: Testimonial[] = [
     id: 3,
     text: "Upen adds a lot of value to the product thinking / brainstorming sessions. He keeps coming up with ideas & also always mocks them up for the stakeholders to be able to internalize & evaluate the ideas better",
     author: "Ravi Tetali",
-    position: "Group Product Manager, Compass",
-    image: "/ravi.avif"
+    position: "Group Product Manager, Compass"
   },
   {
     id: 5,
@@ -218,7 +200,7 @@ const LabsDock: React.FC<{ labs: typeof labs }> = ({ labs }) => {
             onClick={() => {}}
             className="flex flex-col items-center justify-start gap-2 cursor-pointer transition-transform duration-200 hover:scale-110 active:scale-95"
           >
-            <div className="w-14 h-14 rounded-2xl overflow-hidden flex items-center justify-center mx-auto">
+            <div className="w-11 h-11 overflow-hidden flex items-center justify-center mx-auto">
               <img src={lab.image} alt={lab.title} className="w-full h-full object-cover" />
             </div>
             <span className="text-[10px] font-normal text-muted text-center leading-tight whitespace-nowrap block">
@@ -231,6 +213,17 @@ const LabsDock: React.FC<{ labs: typeof labs }> = ({ labs }) => {
   );
 };
 
+// Logo mapping function (kept for backward compatibility, but now returns SVG paths)
+const getCompanyLogo = (companyName: string): string => {
+  const logoMap: { [key: string]: string } = {
+    'Jio': '/experience/jio.svg',
+    'Compass': '/experience/COMP 1.svg',
+    'Hiver': '/experience/hiver.svg',
+    'iB Hubs': '/experience/ib.svg'
+  };
+  return logoMap[companyName] || '';
+};
+
 const ExperienceCard: React.FC<{ job: typeof experience[0] }> = ({ job }) => {
   const [isExpanded, setIsExpanded] = useState(false);
   const contentRef = useRef<HTMLDivElement>(null);
@@ -238,25 +231,27 @@ const ExperienceCard: React.FC<{ job: typeof experience[0] }> = ({ job }) => {
   return (
     <div
       onClick={() => setIsExpanded(!isExpanded)}
-      className="group relative bg-panel rounded-xl cursor-pointer overflow-hidden flex gap-2 transition-colors experience-card-hover"
+      className="group relative rounded-xl cursor-pointer overflow-hidden flex experience-card-hover backdrop-blur-md"
       style={{ 
-        minHeight: '40px', 
-        padding: isExpanded ? '18px 18px 18px 18px' : '18px 18px 6px 18px' 
+        height: isExpanded ? 'auto' : '45px', 
+        padding: isExpanded ? '12px 18px 18px 18px' : '12px 18px' 
       }}
     >
-      {/* Dot aligned with designation */}
-      <div className={`w-1.5 h-1.5 rounded-full ${job.color} shrink-0 opacity-70`} style={{ marginTop: '5px' }} />
-      
       <div className="flex flex-col w-full">
-        <div className="flex justify-between items-start">
-            <div>
-                <h4 className="font-sans font-normal text-ink leading-tight" style={{ fontSize: '14px' }}>{job.role}</h4>
-                <div 
-                  className="font-normal text-muted" 
-                  style={{ fontSize: '14px', marginTop: '1px' }}
-                >
-                  {job.company}
-                </div>
+        <div className="flex justify-between items-center" style={{ height: '18px', flexShrink: 0 }}>
+            <div className="flex gap-6">
+              {/* Company Logo - centered with role + company */}
+              <div className="flex items-center shrink-0">
+                <CompanyLogo 
+                  companyName={job.company}
+                  className="object-contain"
+                  style={{ width: '18px', height: '18px' }}
+                />
+              </div>
+              
+              <div className="flex flex-col justify-center">
+                  <h4 className="font-sans font-normal text-ink leading-tight" style={{ fontSize: '14px' }}>{job.role} • {job.company}</h4>
+              </div>
             </div>
             
             {/* Tenure relocated to right side */}
@@ -289,7 +284,7 @@ const ExperienceCard: React.FC<{ job: typeof experience[0] }> = ({ job }) => {
                     ease: [0.4, 0, 0.2, 1]
                 }}
                 className="text-muted font-normal leading-relaxed"
-                style={{ fontSize: '14px' }}
+                style={{ fontSize: '14px', marginLeft: '40px' }}
             >
                  {job.points && (
                     <ul className="list-disc ml-4 space-y-2 marker:text-muted/50">
@@ -326,8 +321,12 @@ const App: React.FC = () => {
   const [view, setView] = useState<'home' | 'case-study'>('home');
   const [activeSection, setActiveSection] = useState('work');
   const [emailCopied, setEmailCopied] = useState(false);
-  const [headerEmailCopied, setHeaderEmailCopied] = useState(false);
+  const [emailCopiedNoIcon, setEmailCopiedNoIcon] = useState(false);
+  const [tailwindConnectCopied, setTailwindConnectCopied] = useState(false);
   const [theme, setTheme] = useState<Theme>('light');
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [showTopBar, setShowTopBar] = useState(false);
+  const [isChatOpen, setIsChatOpen] = useState(false);
 
   useEffect(() => {
     // Load initial theme
@@ -347,6 +346,20 @@ const App: React.FC = () => {
     return () => window.removeEventListener('theme-change', handleThemeChange as EventListener);
   }, []);
 
+  // Scroll detection for TopBar and hero section
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollY = window.scrollY;
+      const scrollThreshold = 100; // Show top bar after scrolling 100px
+      
+      setIsScrolled(scrollY > 0);
+      setShowTopBar(scrollY > scrollThreshold);
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
     if (element) {
@@ -361,10 +374,17 @@ const App: React.FC = () => {
     setTimeout(() => setEmailCopied(false), 2000);
   };
 
-  const copyEmailHeader = () => {
+
+  const copyEmailNoIcon = () => {
     navigator.clipboard.writeText('upendra.uxr@gmail.com');
-    setHeaderEmailCopied(true);
-    setTimeout(() => setHeaderEmailCopied(false), 2000);
+    setEmailCopiedNoIcon(true);
+    setTimeout(() => setEmailCopiedNoIcon(false), 2000);
+  };
+
+  const copyEmailTailwindConnect = () => {
+    navigator.clipboard.writeText('upendra.uxr@gmail.com');
+    setTailwindConnectCopied(true);
+    setTimeout(() => setTailwindConnectCopied(false), 2000);
   };
 
   const [caseStudyType, setCaseStudyType] = useState<'hiver' | 'agent-client' | 'hiver-experience' | 'ibc-franchise' | 'ibc-design-system' | null>(null);
@@ -620,38 +640,63 @@ const App: React.FC = () => {
   }, []);
 
   return (
-    <div className={`theme-${theme} w-full min-h-screen bg-page text-ink font-sans selection:bg-accent selection:text-white transition-colors duration-500`}>
+    <div className={`theme-${theme} w-full min-h-screen ${isChatOpen ? 'md:bg-panel' : 'bg-page'} text-ink font-sans selection:bg-accent selection:text-white transition-colors duration-500 flex`}>
       
       {/* Noise Overlay */}
       <div className="fixed inset-0 pointer-events-none opacity-[0.03] z-50 bg-noise bg-repeat mix-blend-overlay"></div>
 
+      {/* Top Bar */}
+      <TopBar isVisible={showTopBar} isChatOpen={isChatOpen} />
 
-      {/* Fixed Top-Right Theme Switcher (Desktop) - Always Visible */}
-      <div className="hidden md:flex fixed right-8 top-8 z-50 flex-col items-end">
-        <ThemeSwitcher orientation="horizontal" />
+      {/* Fixed Bottom-Left Theme Switcher (Desktop) - Always Visible */}
+      <div className={`hidden md:flex fixed bottom-8 left-8 z-50 flex-col items-start transition-all duration-300 ${isChatOpen ? 'md:left-8' : 'left-8'}`}>
+        <ThemeSwitcher orientation="vertical" />
       </div>
 
-      {/* View Switching Logic */}
-      <AnimatePresence mode="wait">
-        {view === 'case-study' && caseStudyType === 'hiver' ? (
-           <HiverCaseStudy key="hiver-case-study" onBack={handleCaseStudyBack} />
-        ) : view === 'case-study' && caseStudyType === 'agent-client' ? (
-           <AgentClientConnectionsCaseStudy key="agent-client-case-study" onBack={handleCaseStudyBack} />
-        ) : view === 'case-study' && caseStudyType === 'hiver-experience' ? (
-           <HiverExperienceRedesignCaseStudy key="hiver-experience-case-study" onBack={handleCaseStudyBack} />
-        ) : view === 'case-study' && caseStudyType === 'ibc-franchise' ? (
-           <IBCFranchiseCaseStudy key="ibc-franchise-case-study" onBack={handleCaseStudyBack} />
-        ) : view === 'case-study' && caseStudyType === 'ibc-design-system' ? (
-           <IBCDesignSystemCaseStudy key="ibc-design-system-case-study" onBack={handleCaseStudyBack} />
-        ) : (
-          /* --- HOME PORTFOLIO VIEW --- */
-          <motion.div 
-             key="home"
-             initial={{ opacity: 0 }}
-             animate={{ opacity: 1 }}
-             exit={{ opacity: 0 }}
-             className="w-full"
-          >
+      {/* Main Body Container with Rounded Border when Chat is Open */}
+      <div className={`flex-1 transition-all duration-300 ${isChatOpen ? 'md:relative md:z-40 md:rounded-[24px] md:mx-2 md:my-2 md:bg-page md:border md:border-line/30 md:overflow-y-auto md:mr-[400px] md:h-[calc(100vh-16px)]' : ''}`}>
+        {/* Progressive Blur Layer - Top */}
+        <div 
+          className="sticky top-0 left-0 right-0 pointer-events-none z-50"
+          style={{
+            height: '44px',
+            backdropFilter: 'blur(6px)',
+            WebkitBackdropFilter: 'blur(6px)',
+            maskImage: 'linear-gradient(to bottom, black 0%, transparent 100%)',
+            WebkitMaskImage: 'linear-gradient(to bottom, black 0%, transparent 100%)'
+          }}
+        />
+        {/* View Switching Logic */}
+        <AnimatePresence mode="wait">
+          {view === 'case-study' && caseStudyType === 'hiver' ? (
+             <motion.div key="hiver-case-study" className="flex-1">
+               <HiverCaseStudy onBack={handleCaseStudyBack} />
+             </motion.div>
+          ) : view === 'case-study' && caseStudyType === 'agent-client' ? (
+             <motion.div key="agent-client-case-study" className="flex-1">
+               <AgentClientConnectionsCaseStudy onBack={handleCaseStudyBack} />
+             </motion.div>
+          ) : view === 'case-study' && caseStudyType === 'hiver-experience' ? (
+             <motion.div key="hiver-experience-case-study" className="flex-1">
+               <HiverExperienceRedesignCaseStudy onBack={handleCaseStudyBack} />
+             </motion.div>
+          ) : view === 'case-study' && caseStudyType === 'ibc-franchise' ? (
+             <motion.div key="ibc-franchise-case-study" className="flex-1">
+               <IBCFranchiseCaseStudy onBack={handleCaseStudyBack} />
+             </motion.div>
+          ) : view === 'case-study' && caseStudyType === 'ibc-design-system' ? (
+             <motion.div key="ibc-design-system-case-study" className="flex-1">
+               <IBCDesignSystemCaseStudy onBack={handleCaseStudyBack} />
+             </motion.div>
+          ) : (
+            /* --- HOME PORTFOLIO VIEW --- */
+            <motion.div 
+               key="home"
+               initial={{ opacity: 0 }}
+               animate={{ opacity: 1 }}
+               exit={{ opacity: 0 }}
+               className="flex-1"
+            >
               {/* Single Column Layout Container */}
               <div className="max-w-2xl mx-auto px-6 py-16 md:py-24">
                 
@@ -660,20 +705,54 @@ const App: React.FC = () => {
                     <div className="flex flex-col gap-6">
                         <div className="space-y-4">
                           <div className="flex items-center justify-between">
-                            <h1 className="font-display font-bold text-5xl md:text-6xl leading-none tracking-tight text-ink">
+                            <motion.h1 
+                              className="font-display font-bold text-5xl md:text-6xl leading-none tracking-tight text-ink"
+                              animate={{ 
+                                opacity: 1,
+                                y: 0
+                              }}
+                            >
                                 Upen
-                            </h1>
+                            </motion.h1>
                           </div>
                           
-                          <div className="flex items-center gap-3">
-                            <span className="h-px w-8 bg-line"></span>
-                            <p className="font-sans text-sm text-muted">
-                                Product Designer (9 yoe)
-                            </p>
+                          <div className="flex items-center gap-3 pl-2">
+                            <img src="/experience/next.svg" alt="" className="w-3 theme-aware" />
+                            <div className="font-sans text-sm text-ink flex items-center gap-3 pl-1">
+                              <a 
+                                href="https://dribbble.com/upen-design" 
+                                target="_blank" 
+                                rel="noreferrer"
+                                className="hover:text-ink hover:underline underline-offset-4 transition-colors duration-200"
+                                aria-label="Dribbble"
+                              >
+                                Dribbble
+                              </a>
+                              <span className="opacity-40">/</span>
+                              <a 
+                                href="https://linkedin.com/in/upen-design" 
+                                target="_blank" 
+                                rel="noreferrer"
+                                className="hover:text-ink hover:underline underline-offset-4 transition-colors duration-200"
+                                aria-label="LinkedIn"
+                              >
+                                LinkedIn
+                              </a>
+                              <span className="opacity-40">/</span>
+                              <a 
+                                href="https://github.com/Hazenbox/" 
+                                target="_blank" 
+                                rel="noreferrer"
+                                className="hover:text-ink hover:underline underline-offset-4 transition-colors duration-200"
+                                aria-label="GitHub"
+                              >
+                                GitHub
+                              </a>
+                            </div>
                           </div>
                         </div>
 
-                        <div className="font-sans text-base font-normal leading-[25px] tracking-[-0.1px] text-ink max-w-xl">
+                        <div className="font-sans text-base font-normal leading-[25px] tracking-[-0.1px] text-ink pt-1">
                           <p>
                             I craft scalable systems and prototypes that blend user-centered design with emerging technology. Specialized in AI based apps, Design systems, Real estate, Customer service, E-commerce, Edtech, and Gaming.
                           </p>
@@ -681,75 +760,57 @@ const App: React.FC = () => {
                     </div>
 
                     {/* Actions Row */}
-                    <div className="flex items-center justify-between py-2">
+                    <div className="flex items-center justify-between" style={{ left: 0, top: 0 }}>
                       <div className="flex items-center gap-3">
-                        {/* Header Copy Email Button */}
+                        {/* Copy Email Button (Styled) */}
                         <button 
-                          onClick={copyEmailHeader}
-                          className="relative inline-flex items-center justify-center gap-2 px-4 h-9 rounded-full bg-panel border border-line hover:border-ink/20 hover:bg-page transition-all overflow-hidden w-[108px] md:w-[132px]"
+                          onClick={copyEmailTailwindConnect}
+                          className="bg-ink no-underline group cursor-pointer relative shadow-2xl shadow-black/20 rounded-full p-px text-xs font-semibold leading-6 text-page inline-block overflow-hidden"
                           aria-label="Copy Email"
                         >
-                          <AnimatePresence mode="wait" initial={false}>
-                            {!headerEmailCopied ? (
-                              <motion.div
-                                key="copy"
-                                initial={{ opacity: 0, y: 15, scale: 0.95 }}
-                                animate={{ opacity: 1, y: 0, scale: 1 }}
-                                exit={{ opacity: 0, y: -15, scale: 0.95 }}
-                                transition={{ duration: 0.15, ease: [0.4, 0, 0.2, 1] }}
-                                className="flex items-center gap-2 absolute inset-0 justify-center"
-                              >
-                                <span className="material-symbols-rounded text-lg text-ink">content_copy</span>
-                                <span className="text-sm font-normal text-ink hidden md:block">Copy Email</span>
-                              </motion.div>
-                            ) : (
-                              <motion.div
-                                key="copied"
-                                initial={{ opacity: 0, y: 15, scale: 0.95 }}
-                                animate={{ opacity: 1, y: 0, scale: 1 }}
-                                exit={{ opacity: 0, y: -15, scale: 0.95 }}
-                                transition={{ duration: 0.15, ease: [0.4, 0, 0.2, 1] }}
-                                className="flex items-center gap-2 absolute inset-0 justify-center"
-                              >
-                                <span className="material-symbols-rounded text-lg text-ink">check</span>
-                                <span className="text-sm font-normal text-ink hidden md:block">Copied</span>
-                              </motion.div>
-                            )}
-                          </AnimatePresence>
+                          <span className="absolute inset-0 overflow-hidden rounded-full">
+                            <span 
+                              className="absolute inset-0 rounded-full opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+                              style={{
+                                backgroundImage: `radial-gradient(75% 100% at 50% 0%, rgb(var(--color-accent) / 0.6) 0%, rgb(var(--color-accent) / 0) 75%)`
+                              }}
+                            />
+                          </span>
+                          <div className="relative flex items-center justify-center z-10 rounded-full bg-ink/90 py-1 px-4 ring-1 ring-line/20 min-w-[100px]">
+                            <AnimatePresence mode="wait" initial={false}>
+                              {!tailwindConnectCopied ? (
+                                <motion.span
+                                  key="copy"
+                                  initial={{ opacity: 0, scale: 0.8, y: 4 }}
+                                  animate={{ opacity: 1, scale: 1, y: 0 }}
+                                  exit={{ opacity: 0, scale: 0.8, y: -4 }}
+                                  transition={{ duration: 0.12, ease: [0.4, 0, 0.2, 1] }}
+                                  className="block font-medium"
+                                >
+                                  Copy Email
+                                </motion.span>
+                              ) : (
+                                <motion.span
+                                  key="copied"
+                                  initial={{ opacity: 0, scale: 0.8, y: 4 }}
+                                  animate={{ opacity: 1, scale: 1, y: 0 }}
+                                  exit={{ opacity: 0, scale: 0.8, y: -4 }}
+                                  transition={{ duration: 0.12, ease: [0.4, 0, 0.2, 1] }}
+                                  className="block font-medium"
+                                >
+                                  Copied!
+                                </motion.span>
+                              )}
+                            </AnimatePresence>
+                          </div>
+                          <span className="absolute -bottom-0 left-[1.125rem] h-px w-[calc(100%-2.25rem)] bg-gradient-to-r from-accent/0 via-accent/90 to-accent/0 transition-opacity duration-500 group-hover:opacity-40" />
                         </button>
 
-                        <div className="flex gap-2">
-                            {/* Updated Social Icons with Background on Hover */}
-                            <a href="https://linkedin.com/in/upen-design" target="_blank" rel="noreferrer" 
-                               className="flex items-center justify-center w-9 h-9 rounded-full text-muted hover:text-ink hover:bg-panel border border-transparent hover:border-line transition-all" 
-                               aria-label="LinkedIn"
-                            >
-                              <svg className="w-5 h-5 stroke-current fill-none" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" strokeLinejoin="round">
-                                <path d="M6.09836 7.81968H3.22951V17H6.09836V7.81968ZM6.35656 4.66393C6.35807 4.44693 6.31682 4.23176 6.23517 4.03069C6.15353 3.82963 6.03307 3.64661 5.88069 3.4921C5.72831 3.33759 5.54699 3.2146 5.34708 3.13017C5.14717 3.04574 4.93258 3.0015 4.71558 3H4.66393C4.22264 3 3.79941 3.17531 3.48735 3.48735C3.17531 3.79941 3 4.22264 3 4.66393C3 5.10524 3.17531 5.52847 3.48735 5.84052C3.79941 6.15257 4.22264 6.32788 4.66393 6.32788C4.88096 6.33321 5.09691 6.29574 5.29943 6.21759C5.50196 6.13945 5.68712 6.02216 5.8443 5.87243C6.00149 5.7227 6.12764 5.54346 6.21553 5.34497C6.30343 5.14647 6.35135 4.9326 6.35656 4.71558V4.66393ZM17 11.423C17 8.66316 15.2443 7.59018 13.5 7.59018C12.9289 7.56158 12.3603 7.68321 11.8508 7.94296C11.3415 8.20267 10.909 8.59147 10.5967 9.07049H10.5164V7.81968H7.81967V17H10.6885V12.1172C10.6471 11.6172 10.8046 11.1209 11.1269 10.7363C11.4491 10.3517 11.9102 10.1098 12.4098 10.0632H12.5189C13.4312 10.0632 14.1082 10.6369 14.1082 12.0828V17H16.9771L17 11.423Z" />
-                              </svg>
-                            </a>
-                            <a href="https://dribbble.com/upen-design" target="_blank" rel="noreferrer" 
-                               className="flex items-center justify-center w-9 h-9 rounded-full text-muted hover:text-ink hover:bg-panel border border-transparent hover:border-line transition-all" 
-                               aria-label="Dribbble"
-                            >
-                              <svg className="w-5 h-5 fill-current" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M17.9797 10.527C17.9797 10.5465 17.9867 10.564 17.9847 10.5835C17.9832 10.5935 17.9772 10.601 17.9757 10.611C17.7329 13.7955 15.6179 16.459 12.7326 17.512C12.696 17.5305 12.658 17.543 12.617 17.552C11.7967 17.837 10.9198 18 10.0034 18C5.59066 18 2.00018 14.411 2.00018 10C2.00018 9.664 2.02771 9.335 2.06825 9.0095C2.07025 8.996 2.06625 8.9835 2.06925 8.97C2.07075 8.9635 2.07526 8.959 2.07676 8.9525C2.41458 6.3875 3.97359 4.207 6.1462 3.003C6.18724 2.969 6.23378 2.9465 6.28233 2.9275C7.39491 2.339 8.65863 2 10.0034 2C12.0369 2 13.8897 2.7685 15.3031 4.022C15.3071 4.024 15.3121 4.024 15.3161 4.0265C15.3751 4.0635 15.4232 4.111 15.4607 4.165C17.0232 5.626 18.0067 7.698 18.0067 10C18.0067 10.178 17.9912 10.352 17.9797 10.527ZM16.9296 10.977C15.2956 10.835 13.8577 10.9345 12.6 11.169C12.9958 12.643 13.2065 14.347 13.0789 16.2865C15.1194 15.2825 16.6013 13.3125 16.9296 10.977ZM10.0034 17C10.7126 17 11.3948 16.8895 12.0399 16.6925C12.2301 14.6735 12.0359 12.908 11.619 11.3855C10.1125 11.779 8.91688 12.362 8.03053 12.9205C6.63217 13.802 5.76483 14.7445 5.36745 15.232C6.60364 16.328 8.22471 17 10.0034 17ZM3.00065 10C3.00065 11.719 3.62626 13.2925 4.65826 14.512C5.47405 13.528 7.60611 11.3975 11.3172 10.4195C11.127 9.8865 10.9113 9.387 10.6776 8.921C9.3478 9.5355 7.73174 9.9585 5.79686 9.9585C4.93503 9.9585 4.00663 9.8685 3.01667 9.6805C3.01216 9.787 3.00065 9.892 3.00065 10ZM3.13028 8.6755C6.08964 9.249 8.41089 8.8215 10.1831 8.025C8.79527 5.7165 7.06959 4.4 6.44799 3.9745C4.75285 4.9795 3.51515 6.677 3.13028 8.6755ZM10.0034 3C9.11007 3 8.25724 3.172 7.47098 3.4785C8.17066 4.0105 9.25421 4.9565 10.2917 6.3625C10.5545 6.719 10.8222 7.121 11.083 7.561C12.7521 6.5975 13.8251 5.3475 14.3842 4.5475C13.1835 3.5815 11.661 3 10.0034 3ZM15.1199 5.2375C14.4828 6.124 13.3272 7.4375 11.57 8.4555C11.8357 8.9865 12.0835 9.5665 12.3012 10.1955C13.6755 9.932 15.2365 9.8255 17.0052 9.9795C16.9997 8.1475 16.2815 6.4835 15.1199 5.2375Z" />
-                              </svg>
-                            </a>
-                            <a href="https://github.com/upen-design" target="_blank" rel="noreferrer" 
-                               className="flex items-center justify-center w-9 h-9 rounded-full text-muted hover:text-ink hover:bg-panel border border-transparent hover:border-line transition-all" 
-                               aria-label="GitHub"
-                            >
-                              <svg className="w-5 h-5 stroke-current fill-none" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" strokeLinecap="round" strokeLinejoin="round">
-                                <path d="M12.5022 17.5C12.5052 17.0268 12.5082 15.3844 12.5082 14.7341C12.5082 13.7944 12.1872 13.1795 11.8272 12.8682C14.0621 12.6185 16.4084 11.7673 16.4084 7.89523C16.4084 6.79506 16.0208 5.89506 15.3771 5.19087C15.4802 4.93587 15.8244 3.9108 15.2771 2.5233C15.2771 2.5233 14.4363 2.25249 12.5201 3.55749C11.7183 3.3332 10.8609 3.22222 10.0083 3.21776C9.15548 3.22222 8.29825 3.3333 7.49625 3.55749C5.5801 2.25249 4.73939 2.5233 4.73939 2.5233C4.1921 3.9108 4.53629 4.93587 4.63936 5.19087C3.99568 5.89506 3.60811 6.79506 3.60811 7.89523C3.60811 11.7673 5.95429 12.6185 8.18919 12.8682C7.82929 13.1795 7.50821 13.7944 7.50821 14.7341C7.50821 15.3844 7.51125 17.0268 7.51419 17.5M3 13.4459C4.00733 13.5172 4.58818 14.4326 4.58818 14.4326C5.48352 15.973 6.9373 15.5275 7.50862 15.2703" />
-                              </svg>
-                            </a>
-                        </div>
                       </div>
                       
                       {/* Mobile Switcher (visible < md) */}
                       <div className="md:hidden">
-                          <ThemeSwitcher orientation="horizontal" />
+                          <ThemeSwitcher orientation="vertical" />
                       </div>
                     </div>
                 </header>
@@ -767,12 +828,12 @@ const App: React.FC = () => {
                           <div 
                             key={project.id} 
                             onClick={() => handleProjectClick(project)}
-                            className="group work-item-hover flex flex-col sm:flex-row sm:items-center py-3 px-3 cursor-pointer rounded-xl transition-colors"
+                            className="group work-item-hover backdrop-blur-md flex flex-col sm:flex-row sm:items-center py-3 px-3 cursor-pointer rounded-xl"
                           >
                             <h4 className="font-sans font-normal text-[14px] text-ink flex-shrink-0 pr-1.5">
                               {project.title}
                             </h4>
-                            <span className="divider-line hidden sm:block flex-1 h-px bg-line/60 mx-1.5 transition-colors"></span>
+                            <span className="divider-line hidden sm:block flex-1 h-px bg-line/60 mx-1.5"></span>
                             <div className="flex items-center gap-4 mt-1 sm:mt-0 flex-shrink-0 pl-1.5">
                               <span className="text-muted text-[13px] font-normal group-hover:hidden">{project.industry || project.category}</span>
                               <span className="text-muted text-[13px] font-normal hidden group-hover:inline">{project.category}</span>
@@ -789,7 +850,7 @@ const App: React.FC = () => {
                     <section id="experience" className="scroll-mt-20">
                       <h3 className="text-sm font-normal text-muted mb-4">Experience</h3>
 
-                      <div className="space-y-3"> 
+                      <div> 
                         {experience.map((job) => (
                             <ExperienceCard key={job.id} job={job} />
                         ))}
@@ -882,6 +943,37 @@ const App: React.FC = () => {
                                 )}
                             </AnimatePresence>
                         </button>
+
+                        <button 
+                            onClick={copyEmailNoIcon}
+                            className="group relative inline-flex items-center justify-center gap-3 px-8 h-9 bg-ink text-page rounded-full font-medium text-lg hover:bg-ink/90 transition-all hover:-translate-y-1 shadow-lg shadow-black/5 overflow-hidden w-[160px]"
+                        >
+                            <AnimatePresence mode="wait" initial={false}>
+                                {!emailCopiedNoIcon ? (
+                                    <motion.div
+                                        key="copy"
+                                        initial={{ opacity: 0, y: 20, scale: 0.9 }}
+                                        animate={{ opacity: 1, y: 0, scale: 1 }}
+                                        exit={{ opacity: 0, y: -20, scale: 0.9 }}
+                                        transition={{ duration: 0.25, ease: [0.4, 0, 0.2, 1] }}
+                                        className="flex items-center gap-2 absolute inset-0 justify-center"
+                                    >
+                                        <span>Copy Email</span>
+                                    </motion.div>
+                                ) : (
+                                    <motion.div
+                                        key="copied"
+                                        initial={{ opacity: 0, y: 20, scale: 0.9 }}
+                                        animate={{ opacity: 1, y: 0, scale: 1 }}
+                                        exit={{ opacity: 0, y: -20, scale: 0.9 }}
+                                        transition={{ duration: 0.25, ease: [0.4, 0, 0.2, 1] }}
+                                        className="flex items-center gap-2 absolute inset-0 justify-center"
+                                    >
+                                        <span>Copied!</span>
+                                    </motion.div>
+                                )}
+                            </AnimatePresence>
+                        </button>
                       </div> */}
                     </section>
 
@@ -897,13 +989,23 @@ const App: React.FC = () => {
                     </div>
                 </footer>
               </div>
-
-              <FloatingNav activeSection={activeSection} scrollToSection={scrollToSection} />
           </motion.div>
         )}
-      </AnimatePresence>
+        </AnimatePresence>
+        {/* Progressive Blur Layer - Bottom */}
+        <div 
+          className="sticky bottom-0 left-0 right-0 pointer-events-none z-50"
+          style={{
+            height: '44px',
+            backdropFilter: 'blur(6px)',
+            WebkitBackdropFilter: 'blur(6px)',
+            maskImage: 'linear-gradient(to bottom, transparent 0%, black 100%)',
+            WebkitMaskImage: 'linear-gradient(to bottom, transparent 0%, black 100%)'
+          }}
+        />
+      </div>
 
-      <AIChatWidget />
+      <AIChatWidget onOpenChange={setIsChatOpen} />
     </div>
   );
 };

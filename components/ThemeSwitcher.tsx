@@ -204,7 +204,7 @@ const ThemeSwitcher: React.FC<ThemeSwitcherProps> = ({ orientation = 'horizontal
         {!isContainerHovered ? (
           <motion.button
             key="collapsed"
-            className="flex items-center justify-center px-2.5 py-2.5 rounded-full bg-panel theme-switcher-container text-ink/60 hover:text-ink transition-colors min-w-[36px] min-h-[36px]"
+            className="flex items-center justify-center px-2.5 py-2.5 rounded-full bg-black/10 backdrop-blur-md theme-switcher-container text-ink/60 hover:text-ink transition-colors min-w-[36px] min-h-[36px]"
             onClick={() => setIsContainerHovered(true)}
           >
             <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
@@ -214,29 +214,40 @@ const ThemeSwitcher: React.FC<ThemeSwitcherProps> = ({ orientation = 'horizontal
         ) : (
           <motion.div
             key="expanded"
-            initial={{ width: 36 }}
-            animate={{ width: 280 }}
-            exit={{ width: 36 }}
+            initial={isVertical ? { height: 40 } : { width: 36 }}
+            animate={isVertical ? { height: 320 } : { width: 280 }}
+            exit={isVertical ? { height: 40 } : { width: 36 }}
             transition={{ 
               duration: 0.15,
               ease: [0.4, 0, 0.2, 1]
             }}
-            style={{ overflow: 'hidden' }}
-            className="flex items-center gap-3 px-2.5 py-2.5 rounded-full bg-panel theme-switcher-container min-w-[36px] min-h-[36px]"
+            style={{ overflow: 'hidden', ...(isVertical ? { width: 40 } : {}) }}
+            className={`flex ${isVertical ? 'flex-col items-center' : 'items-center'} gap-3 px-2.5 py-2.5 rounded-full bg-black/10 backdrop-blur-md theme-switcher-container ${isVertical ? 'min-h-[40px] w-[40px]' : 'min-w-[36px] min-h-[36px]'}`}
           >
-              {/* Light Mode Icon */}
-              <div className="flex-shrink-0 text-ink/60">
-                <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
-                </svg>
-              </div>
+              {/* Light Mode Icon - Top for vertical */}
+              {isVertical && (
+                <div className="flex-shrink-0 text-ink/60">
+                  <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+                  </svg>
+                </div>
+              )}
+
+              {/* Light Mode Icon - Left for horizontal */}
+              {!isVertical && (
+                <div className="flex-shrink-0 text-ink/60">
+                  <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+                  </svg>
+                </div>
+              )}
 
               {/* Slider Component */}
               <div
                 ref={sliderRef}
                 className={`
                   relative cursor-pointer rounded-full overflow-hidden
-                  ${isVertical ? 'w-12 h-64' : 'h-5 w-52'}
+                  ${isVertical ? 'w-4 h-64' : 'h-5 w-52'}
                   bg-panel/90 theme-switcher-container theme-switcher-slider
                 `}
                 onMouseDown={handleMouseDown}
@@ -304,12 +315,23 @@ const ThemeSwitcher: React.FC<ThemeSwitcherProps> = ({ orientation = 'horizontal
         </motion.div>
               </div>
 
-              {/* Dark Mode Icon */}
-              <div className="flex-shrink-0 text-ink/60">
-                <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
-                </svg>
-              </div>
+              {/* Dark Mode Icon - Bottom for vertical */}
+              {isVertical && (
+                <div className="flex-shrink-0 text-ink/60">
+                  <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+                  </svg>
+                </div>
+              )}
+
+              {/* Dark Mode Icon - Right for horizontal */}
+              {!isVertical && (
+                <div className="flex-shrink-0 text-ink/60">
+                  <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+                  </svg>
+                </div>
+              )}
             </motion.div>
           )}
         </AnimatePresence>
