@@ -313,12 +313,10 @@ const AIChatWidget: React.FC<AIChatWidgetProps> = ({ onOpenChange }) => {
         y: rect.top + rect.height / 2 - 35
       };
       setFabPosition(fabPos);
-      console.log('[Orb Debug] FAB Position:', fabPos);
     }
     
     // Prevent position updates during active orb animation to avoid jerky motion
     if (!skipAnimationCheck && isOrbAnimatingRef.current) {
-      console.log('[Orb Debug] Skipping position update - animation in progress');
       return;
     }
     
@@ -361,27 +359,8 @@ const AIChatWidget: React.FC<AIChatWidgetProps> = ({ onOpenChange }) => {
           
           if (isValidPosition) {
             setPanelAnchorPosition(panelPos);
-            console.log('[Orb Debug] Panel Anchor Position:', panelPos, {
-              rect: { left: rect.left, top: rect.top, width: rect.width, height: rect.height },
-              center: { x: centerX, y: centerY },
-              isDesktop,
-              panelAnimationComplete,
-              welcomeScreenAnimationComplete
-            });
-          } else {
-            console.warn('[Orb Debug] Invalid panel anchor position calculated:', panelPos);
           }
-        } else {
-          console.warn('[Orb Debug] Panel anchor ref not visible or has invalid dimensions:', {
-            width: rect.width,
-            height: rect.height,
-            display: styles.display,
-            visibility: styles.visibility,
-            opacity: styles.opacity
-          });
         }
-      } else {
-        console.warn('[Orb Debug] Panel anchor ref not found', { isDesktop, state });
       }
     }
   }, [state, hasSelectedPersona, messages.length, panelAnimationComplete, welcomeScreenAnimationComplete]);
@@ -725,7 +704,6 @@ const AIChatWidget: React.FC<AIChatWidgetProps> = ({ onOpenChange }) => {
         onAnimationComplete={(definition) => {
           // Only mark complete when scale reaches 1 (fully open)
           if (isOpen && definition.scale === 1) {
-            console.log('[Orb Debug] Panel animation complete');
             setPanelAnimationComplete(true);
           }
         }}
@@ -784,7 +762,6 @@ const AIChatWidget: React.FC<AIChatWidgetProps> = ({ onOpenChange }) => {
                     delay: MOTION.duration.panel / 1000 / 2
                   }}
                   onAnimationComplete={() => {
-                    console.log('[Orb Debug] Welcome screen animation complete (desktop)');
                     setWelcomeScreenAnimationComplete(true);
                   }}
                 >
@@ -934,7 +911,6 @@ const AIChatWidget: React.FC<AIChatWidgetProps> = ({ onOpenChange }) => {
               mass: 0.8
             }}
             onAnimationComplete={() => {
-              console.log('[Orb Debug] Mobile panel animation complete');
               setPanelAnimationComplete(true);
             }}
             className="md:hidden fixed top-0 right-0 h-screen w-full z-50 bg-panel border-l border-line shadow-2xl flex flex-col overflow-hidden pointer-events-auto"
@@ -991,7 +967,6 @@ const AIChatWidget: React.FC<AIChatWidgetProps> = ({ onOpenChange }) => {
                     delay: MOTION.duration.panel / 1000 / 2
                   }}
                   onAnimationComplete={() => {
-                    console.log('[Orb Debug] Welcome screen animation complete (mobile)');
                     setWelcomeScreenAnimationComplete(true);
                   }}
                 >

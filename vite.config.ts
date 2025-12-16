@@ -40,7 +40,7 @@ export default defineConfig(({ mode }) => {
         port: 2025,
         host: '0.0.0.0',
       },
-      plugins: [react()],
+      plugins: [react(), optionalPeerDepsPlugin()],
       define: {
         'process.env.API_KEY': JSON.stringify(env.GEMINI_API_KEY),
         'process.env.GEMINI_API_KEY': JSON.stringify(env.GEMINI_API_KEY),
@@ -54,7 +54,6 @@ export default defineConfig(({ mode }) => {
       optimizeDeps: {
         include: ['gsap', '@appletosolutions/reactbits', 'three', '@react-three/fiber', '@react-three/drei', 'ogl', 'matter-js']
       },
-      plugins: [react(), optionalPeerDepsPlugin()],
       build: {
         commonjsOptions: {
           include: [/node_modules/],

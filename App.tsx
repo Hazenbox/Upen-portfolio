@@ -320,8 +320,6 @@ const caseStudyTypeToSlug: Record<string, string> = {
 const App: React.FC = () => {
   const [view, setView] = useState<'home' | 'case-study'>('home');
   const [activeSection, setActiveSection] = useState('work');
-  const [emailCopied, setEmailCopied] = useState(false);
-  const [emailCopiedNoIcon, setEmailCopiedNoIcon] = useState(false);
   const [tailwindConnectCopied, setTailwindConnectCopied] = useState(false);
   const [theme, setTheme] = useState<Theme>('light');
   const [isScrolled, setIsScrolled] = useState(false);
@@ -366,19 +364,6 @@ const App: React.FC = () => {
       element.scrollIntoView({ behavior: 'smooth' });
     }
     setActiveSection(sectionId);
-  };
-
-  const copyEmail = () => {
-    navigator.clipboard.writeText('upendra.uxr@gmail.com');
-    setEmailCopied(true);
-    setTimeout(() => setEmailCopied(false), 2000);
-  };
-
-
-  const copyEmailNoIcon = () => {
-    navigator.clipboard.writeText('upendra.uxr@gmail.com');
-    setEmailCopiedNoIcon(true);
-    setTimeout(() => setEmailCopiedNoIcon(false), 2000);
   };
 
   const copyEmailTailwindConnect = () => {
@@ -904,77 +889,7 @@ const App: React.FC = () => {
 
                     {/* Contact */}
                     <section id="contact" className="scroll-mt-20 text-center">
-                      {/* Hidden for now */}
-                      {/* <div className="py-20">
-                        <h2 className="font-display font-bold text-4xl mb-6 text-ink">Ready for the Next Chapter?</h2>
-                        <p className="text-lg font-light mb-8 max-w-lg mx-auto text-muted">
-                          I am currently exploring full-time Product Design roles where I can drive design systems and user experience strategy. If your team values craftsmanship and code, let's talk.
-                        </p>
-                        
-                        <button 
-                            onClick={copyEmail}
-                            className="group relative inline-flex items-center justify-center gap-3 px-8 h-9 bg-ink text-page rounded-full font-medium text-lg hover:bg-ink/90 transition-all hover:-translate-y-1 shadow-lg shadow-black/5 overflow-hidden w-[160px]"
-                        >
-                            <AnimatePresence mode="wait" initial={false}>
-                                {!emailCopied ? (
-                                    <motion.div
-                                        key="copy"
-                                        initial={{ opacity: 0, y: 20, scale: 0.9 }}
-                                        animate={{ opacity: 1, y: 0, scale: 1 }}
-                                        exit={{ opacity: 0, y: -20, scale: 0.9 }}
-                                        transition={{ duration: 0.25, ease: [0.4, 0, 0.2, 1] }}
-                                        className="flex items-center gap-2 absolute inset-0 justify-center"
-                                    >
-                                        <span>Copy Email</span>
-                                        <span className="material-symbols-rounded">content_copy</span>
-                                    </motion.div>
-                                ) : (
-                                    <motion.div
-                                        key="copied"
-                                        initial={{ opacity: 0, y: 20, scale: 0.9 }}
-                                        animate={{ opacity: 1, y: 0, scale: 1 }}
-                                        exit={{ opacity: 0, y: -20, scale: 0.9 }}
-                                        transition={{ duration: 0.25, ease: [0.4, 0, 0.2, 1] }}
-                                        className="flex items-center gap-2 absolute inset-0 justify-center"
-                                    >
-                                        <span>Copied!</span>
-                                        <span className="material-symbols-rounded">check</span>
-                                    </motion.div>
-                                )}
-                            </AnimatePresence>
-                        </button>
-
-                        <button 
-                            onClick={copyEmailNoIcon}
-                            className="group relative inline-flex items-center justify-center gap-3 px-8 h-9 bg-ink text-page rounded-full font-medium text-lg hover:bg-ink/90 transition-all hover:-translate-y-1 shadow-lg shadow-black/5 overflow-hidden w-[160px]"
-                        >
-                            <AnimatePresence mode="wait" initial={false}>
-                                {!emailCopiedNoIcon ? (
-                                    <motion.div
-                                        key="copy"
-                                        initial={{ opacity: 0, y: 20, scale: 0.9 }}
-                                        animate={{ opacity: 1, y: 0, scale: 1 }}
-                                        exit={{ opacity: 0, y: -20, scale: 0.9 }}
-                                        transition={{ duration: 0.25, ease: [0.4, 0, 0.2, 1] }}
-                                        className="flex items-center gap-2 absolute inset-0 justify-center"
-                                    >
-                                        <span>Copy Email</span>
-                                    </motion.div>
-                                ) : (
-                                    <motion.div
-                                        key="copied"
-                                        initial={{ opacity: 0, y: 20, scale: 0.9 }}
-                                        animate={{ opacity: 1, y: 0, scale: 1 }}
-                                        exit={{ opacity: 0, y: -20, scale: 0.9 }}
-                                        transition={{ duration: 0.25, ease: [0.4, 0, 0.2, 1] }}
-                                        className="flex items-center gap-2 absolute inset-0 justify-center"
-                                    >
-                                        <span>Copied!</span>
-                                    </motion.div>
-                                )}
-                            </AnimatePresence>
-                        </button>
-                      </div> */}
+                      {/* Contact section content can be added here in the future */}
                     </section>
 
                 </main>
