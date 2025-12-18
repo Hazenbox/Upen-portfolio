@@ -639,7 +639,7 @@ const App: React.FC = () => {
       </div>
 
       {/* Main Body Container with Rounded Border when Chat is Open */}
-      <div className={`flex-1 transition-all duration-300 ${isChatOpen ? 'md:relative md:z-40 md:rounded-[24px] md:mx-2 md:my-2 md:bg-page md:border md:border-line/30 md:overflow-y-auto md:mr-[400px] md:h-[calc(100vh-16px)]' : ''}`}>
+      <div className={`flex-1 transition-all duration-300 ${isChatOpen ? 'md:relative md:z-40 md:rounded-[24px] md:mx-2 md:my-2 md:bg-page md:border md:border-line md:overflow-y-auto md:mr-[400px] md:h-[calc(100vh-16px)]' : ''}`}>
         {/* Progressive Blur Layer - Top */}
         <div 
           className="sticky top-0 left-0 right-0 pointer-events-none z-50"
