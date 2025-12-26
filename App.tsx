@@ -807,13 +807,13 @@ const App: React.FC = () => {
                     
                     {/* Work Index Section */}
                     <section id="work" className="scroll-mt-20">
-                      <h3 className="text-sm font-normal text-muted mb-4">Featured Works</h3>
+                      <h3 className="text-sm font-normal text-muted mb-8">Featured Works</h3>
                       
-                      <ImageStack images={projects.slice(0, 5).map(p => ({
+                      {/* <ImageStack images={projects.slice(0, 5).map(p => ({
                         id: p.id,
                         src: p.image,
                         alt: p.title
-                      }))} />
+                      }))} /> */}
 
                       {/* Reduced space between items */}
                       <div className="w-full space-y-0">
