@@ -23,10 +23,15 @@ declare global {
 }
 
 // --- MOCK DATA ---
-const projects: Project[] = [
+
+// Featured Works (placeholder for future projects)
+const projects: Project[] = [];
+
+// Migrated Works from upen.design
+const migratedWorks: Project[] = [
   {
     id: 8,
-    title: "Agent-Client Connections",
+    title: "Agent-Client Connections on Compass",
     category: "Case study",
     industry: "Real Estate",
     description: "End-to-end design of agent-client connection features across iOS, Web, and Android at Compass, enabling agents to build stronger relationships through branded experiences and activity tracking.",
@@ -44,7 +49,7 @@ const projects: Project[] = [
   },
   {
     id: 9,
-    title: "Hiver Experience Redesign",
+    title: "Hiver Revamp",
     category: "Case study",
     industry: "Product revamp",
     description: "Complete UI/UX redesign of Hiver's email management tool to align with Gmail's new design while establishing Hiver's unique identity within the Gmail ecosystem.",
@@ -807,17 +812,35 @@ const App: React.FC = () => {
                     
                     {/* Work Index Section */}
                     <section id="work" className="scroll-mt-20">
-                      <h3 className="text-sm font-normal text-muted mb-8">Featured Works</h3>
-                      
-                      {/* <ImageStack images={projects.slice(0, 5).map(p => ({
-                        id: p.id,
-                        src: p.image,
-                        alt: p.title
-                      }))} /> */}
+                      {/* Featured Works - placeholder for future projects */}
+                      {projects.length > 0 && (
+                        <>
+                          <h3 className="text-sm font-normal text-muted mb-8">Featured Works</h3>
+                          <div className="w-full space-y-0 mb-12">
+                            {projects.map((project) => (
+                              <div 
+                                key={project.id} 
+                                onClick={() => handleProjectClick(project)}
+                                className="group work-item-hover backdrop-blur-md flex flex-col sm:flex-row sm:items-center py-3 px-3 cursor-pointer rounded-xl"
+                              >
+                                <h4 className="font-sans font-normal text-[14px] text-ink flex-shrink-0 pr-1.5">
+                                  {project.title}
+                                </h4>
+                                <span className="divider-line hidden sm:block flex-1 h-px bg-line/60 mx-1.5"></span>
+                                <div className="flex items-center gap-4 mt-1 sm:mt-0 flex-shrink-0 pl-1.5">
+                                  <span className="text-muted text-[13px] font-normal group-hover:hidden">{project.industry || project.category}</span>
+                                  <span className="text-muted text-[13px] font-normal hidden group-hover:inline">{project.category}</span>
+                                </div>
+                              </div>
+                            ))}
+                          </div>
+                        </>
+                      )}
 
-                      {/* Reduced space between items */}
+                      {/* Migrated Works */}
+                      <h3 className="text-sm font-normal text-muted mb-8">Migrated Works</h3>
                       <div className="w-full space-y-0">
-                        {projects.map((project) => (
+                        {migratedWorks.map((project) => (
                           <div 
                             key={project.id} 
                             onClick={() => handleProjectClick(project)}

@@ -371,16 +371,16 @@ const HiverCaseStudy: React.FC<HiverCaseStudyProps> = ({ onBack }) => {
             <section id="overview" className="space-y-8">
                 <div data-slide="0">
                     <h1 className="font-display font-bold text-5xl md:text-6xl leading-tight text-ink">
-                        Hiver Analytics:<br />Reports Module
+                        Hiver Analytics -<br />Reports Module
                     </h1>
                     <p className="font-sans text-base text-ink max-w-3xl">
-                        Leading the end-to-end design of a helpdesk analytics suite inside Gmail, enabling teams to track performance without leaving their inbox.
+                        Hiver is a chrome extension that works like a helpdesk inside Gmail. It brings collaboration features inside Gmail using the shared mailbox concept. In businesses, shared mailboxes help teams by enabling them to share their responsibilities (they can perform multiple actions like reading, replying, drafting messages, etc.) on emails.
                     </p>
                     
                     <div className="grid grid-cols-2 md:grid-cols-4 gap-6 pt-8 border-t border-line">
                         <div>
                             <div className="font-sans text-sm text-muted mb-2">My Role</div>
-                            <div className="font-sans text-base text-ink">Lead Product Designer</div>
+                            <div className="font-sans text-base text-ink">I led the end-to-end design of this tool from user research, high-fidelity design, prototyping, and usability testing.</div>
                         </div>
                         <div>
                             <div className="font-sans text-sm text-muted mb-2">Duration</div>
@@ -394,13 +394,6 @@ const HiverCaseStudy: React.FC<HiverCaseStudyProps> = ({ onBack }) => {
                             <div className="font-sans text-sm text-muted mb-2">Platform</div>
                             <div className="font-sans text-base text-ink">Web / Chrome Ext</div>
                         </div>
-                    </div>
-
-                    <div className="mt-12 bg-panel rounded-3xl p-8">
-                        <h3 className="font-display font-bold text-3xl mb-4 text-ink">Context</h3>
-                        <p className="font-sans text-base text-ink">
-                            Hiver is a customer support platform built for teams using Gmail. It allows teams to manage shared email inboxes, such as support@ or info@, directly from Gmail. With Hiver, teams can collaborate on customer queries, assign emails to team members, track performance, and ensure smooth communication without leaving the Gmail interface.
-                        </p>
                     </div>
                 </div>
 
