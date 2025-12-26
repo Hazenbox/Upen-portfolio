@@ -442,7 +442,7 @@ const AgentClientConnectionsCaseStudy: React.FC<AgentClientConnectionsCaseStudyP
                     </div>
                     
                     <p className="font-sans text-base text-ink">
-                        When a client hires a brokerage, they are really hiring the agent. By nurturing their relationships and having visibility into their clients' activity on the Compass platform, our agents can better understand the needs of their clients and in turn, provide the best experience possible for them.
+                        When a client hires a brokerage, they are really hiring the agent. By nurturing their relationships and having visibility into their clients' activity on the Compass platform, our agents can better understand the needs of their clients and in turn, provide the best experience possible for them. When agents do a great job for their clients, repeat business, and referrals will follow.
                     </p>
 
                     <div className="bg-red-500/5 p-8 rounded-2xl">
@@ -452,21 +452,21 @@ const AgentClientConnectionsCaseStudy: React.FC<AgentClientConnectionsCaseStudyP
                         <div className="space-y-4">
                             <div>
                                 <p className="font-sans text-base text-ink">
-                                    <span className="font-sans text-base font-medium text-ink">Problem 1:</span> Agents representing buyers want their prospective and active clients to have a (branded) experience on Compass to prevent any loss of business from clients being exposed to other agents while browsing on the platform.
+                                    <span className="font-sans text-base font-medium text-ink">1.</span> Agents representing buyers want their prospective and active clients to have a (branded) experience on Compass to prevent any loss of business from clients being exposed to other agents while browsing on the platform.
                                 </p>
                             </div>
                             <div>
                                 <p className="font-sans text-base text-ink">
-                                    <span className="font-sans text-base font-medium text-ink">Problem 2:</span> Today, the only way that agents can understand their clients' activity (like search criteria, type of listings that a client has saved, etc.) is by sharing a Collection with the client, which is an online collection of listings that matches the client's home buying criteria. Agents do not want to solely rely on Collections to track client activity.
+                                    <span className="font-sans text-base font-medium text-ink">2.</span> Today, the only way that agents can understand their clients' activity (like search criteria, type of listings that a client has saved, etc.) is by sharing a Collection with the client, which is an online collection of listings that matches the client's home buying criteria. Agents do not want to solely rely on this mechanism because it's a manual effort that requires additional time to educate and onboard clients.
                                 </p>
                             </div>
                         </div>
                     </div>
 
                     <div className="bg-panel p-6 rounded-2xl">
-                        <p className="text-ink font-semibold text-lg">
-                            1,637 agents reported it as a need.
-                        </p>
+                        <h3 className="font-display font-bold text-3xl text-ink">
+                            1637 agents reported it as a need.
+                        </h3>
                     </div>
 
                     <div className="w-full rounded-2xl overflow-hidden cursor-pointer" onClick={() => setPreviewImage({ src: "/agent-client-connections-assets/eb22ff_3250abd975f2464e82c6992eaa15047d~mv2.jpg", alt: "Agent Problems" })}>
@@ -500,7 +500,6 @@ const AgentClientConnectionsCaseStudy: React.FC<AgentClientConnectionsCaseStudyP
 
                     <div className="space-y-8">
                     <div>
-                        <h3 className="font-display font-bold text-3xl mb-4 text-ink">Understanding Agent Needs</h3>
                         <p className="font-sans text-base text-ink mb-6">
                             In order to get a better understanding of the agent needs, behaviors and motivations, I sifted through a bunch of comments and feature requests by our agents on Canny.io (At Compass, we capture feedback from our agents on canny.io), and further categorized them under buckets, and highlighted them in terms of importance. This was some crucial feedback that helped me identify various pain points and areas of improvement.
                         </p>
@@ -551,7 +550,7 @@ const AgentClientConnectionsCaseStudy: React.FC<AgentClientConnectionsCaseStudyP
                     <div>
                         <h3 className="font-display font-bold text-3xl mb-4 text-ink">Product Audit</h3>
                         <p className="font-sans text-base text-ink mb-6">
-                            In order to understand how agents collaborate with their clients, I started auditing the user flows of all our different features. <span className="font-semibold text-ink">I identified 14 different touchpoints!</span> This exercise helped us determine the design elements that fit in all these cases.
+                            In order to understand how agents collaborate with their clients, I started auditing the user flows of all our different features. <span className="font-semibold text-ink">I identified 14 different touchpoints!</span> This exercise helped us determine the design elements that fit in all these cases and provide a consistent experience across the Compass web, iOS, and Android platforms.
                         </p>
                         <div className="w-full rounded-2xl overflow-hidden cursor-pointer" onClick={() => setPreviewImage({ src: "/agent-client-connections-assets/LFR_matrix.png", alt: "Product Audit - 14 touchpoints" })}>
                             <img 
@@ -748,7 +747,7 @@ const AgentClientConnectionsCaseStudy: React.FC<AgentClientConnectionsCaseStudyP
                             </li>
                         </ul>
                         <p className="font-sans text-base text-ink">
-                            When a user accesses Compass via one of the five options above, only the agent's branding and contact information will appear on Compass for that session. All forms will be branded on behalf of the agent and routed directly to them. When a form is submitted, if the contact did not previously exist in the agent CRM, a new contact will be created.
+                            When a user accesses Compass via one of the five options above, only the agent's branding and contact information will appear on Compass for 8 hours. All forms will be branded on behalf of the agent and routed directly to them. When a form is submitted, if the contact did not previously exist in the agent CRM, a new contact will be created.
                         </p>
                     </div>
 
@@ -771,11 +770,10 @@ const AgentClientConnectionsCaseStudy: React.FC<AgentClientConnectionsCaseStudyP
                                 <span>Mobile invite</span>
                             </li>
                         </ul>
-                        <p className="font-sans text-base text-ink mb-4">
-                            Once the client has signed up/in after receiving any of the above invites, the agent will be permanently connected to the client. The client will only see the agent's branding from device to device.
-                        </p>
                         <p className="font-sans text-base text-ink">
-                            Once a client is connected to an agent, the agent will have the ability to view client activity on any device, including viewed listings and searches queried.
+                            Once the client has signed up/in after receiving any of the above invites, the agent will be permanently connected to the client. The client will only see the agent's branding from device to device.   
+  
+Once a client is connected to an agent, the agent will have the ability to view client activity on any device, including viewed listings and searches queried.
                         </p>
                     </div>
                 </div>
@@ -820,7 +818,7 @@ const AgentClientConnectionsCaseStudy: React.FC<AgentClientConnectionsCaseStudyP
                         <div>
                             <p className="font-sans text-base font-medium text-ink mb-2">Agents:</p>
                             <p className="font-sans text-base text-ink">
-                                "I want my clients to be in my branded experience. But, I don't want to spend time managing connections manually."
+                                "I want my clients to be in my branded experience. But, I don't want to spend time much time with the non-serious clients."
                             </p>
                         </div>
                     </div>
@@ -887,9 +885,9 @@ const AgentClientConnectionsCaseStudy: React.FC<AgentClientConnectionsCaseStudyP
 
                 <div className="space-y-12">
                     <div>
-                        <h3 className="font-display font-bold text-3xl mb-4 text-ink">Agent Problem 1:</h3>
+                        <h3 className="font-display font-bold text-3xl mb-4 text-ink">Agent problem 1:</h3>
                         <p className="font-sans text-base text-ink mb-6">
-                            Agents want their clients to see only them as the only agent to prevent loss of business to their competition. We figured out the significant touchpoints for clients. The critical elements in the agent branding are the agent's avatar, name, and contact information.
+                            Agents want their clients to see only them as the only agent to prevent loss of business to their competition. We figured out the significant touchpoints for clients. The critical elements in the agent branding are the agent's avatar, agent name, and contact info.
                         </p>
                         <div className="space-y-6">
                             <div>
@@ -938,7 +936,8 @@ const AgentClientConnectionsCaseStudy: React.FC<AgentClientConnectionsCaseStudyP
                     </div>
 
                     <div>
-                        <h3 className="font-display font-bold text-3xl mb-4 text-ink">Agent Problem 2: Easy ways to invite and connect with clients</h3>
+                        <h3 className="font-display font-bold text-3xl mb-4 text-ink">Agent problem 2:</h3>
+                        <h4 className="font-sans text-base font-medium text-ink mb-4">Easy ways to invite and connect with clients</h4>
                         <p className="font-sans text-base text-ink mb-6">
                             Apart from collections invite, two more invitation mechanisms exist in the system. Instead of introducing a new way, we leveraged these methods to establish a connection between agent-client.
                         </p>
@@ -1012,7 +1011,7 @@ const AgentClientConnectionsCaseStudy: React.FC<AgentClientConnectionsCaseStudyP
                     </div>
 
                     <p className="font-sans text-base text-ink">
-                        We enabled agents to track the client's activity once connected with them via the above invitation mechanisms. The agent will be notified when a client takes any actions on the platform. For example, agents will be notified when a client views a listing, saves a property, or performs a search.
+                        We enabled agents to track the client's activity once connected with them via the above invitation mechanisms. The agent will be notified when a client takes any actions on the platform. For example, agents will receive notifications and activity feed when a client saves a listing or searches for properties in a location.
                     </p>
 
                     <div className="grid md:grid-cols-2 gap-6">
